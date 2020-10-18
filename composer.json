@@ -32,9 +32,13 @@
         "friendsofphp/php-cs-fixer": "~2.12"
     },
     "autoload": {
-        "psr-4": { "Klarna\\Payments\\" : "src/" }
+        "psr-4": {
+            "Klarna\\Payments\\": "src/"
+        }
     },
     "autoload-dev": {
-        "psr-4": { "Klarna\\Payments\\" : "test/" }
+        "psr-4": {
+            "Klarna\\Payments\\": "test/"
+        }
     }
 }

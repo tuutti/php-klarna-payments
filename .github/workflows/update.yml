@@ -9,9 +9,10 @@ on:
 jobs:
   update-definitions:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/tuutti/klarna-base-generator
     steps:
       - uses: actions/checkout@v2
-      - uses: php-actions/composer@v2
       - name: Update schemas
         run: |
           ./build.sh

@@ -12,11 +12,14 @@ echo "$( jq '.securityDefinitions = { "basicAuth": { "type": "basic" }}' $NAME.j
 openapi-generator-cli generate -c $NAME.config.json -i $NAME.json -g php -o ../$NAME --skip-validate-spec --git-host=gitlab.com --git-repo-id=php-klarna-$NAME --git-user-id=tuutti --global-property apiTests=false
 
 # Convert all Models to extend and use same interface.
-find . -type f -name "*" -print0 | xargs -0 sed -i'' -e 's/\<interface ModelInterface extends \Klarna\Model\ModelInterface\>/interface ModelInterface extends \Klarna\Model\ModelInterface extends \\Klarna\\Model\\ModelInterface/g'
-find . -type f -name "*" -exec sed -i 's|Klarna\\Model\\'"$NAMESPACE"'\\ModelInterface|Klarna\\Model\\ModelInterface|g' {} +
+for EXT in php md
+do
+  find . -type f -name "*.$EXT" -exec sed -i 's/\<interface ModelInterface\>/interface ModelInterface extends \\Klarna\\Model\\ModelInterface/g' {} +
+  find . -type f -name "*.$EXT" -exec sed -i 's|Klarna\\Model\\'"$NAMESPACE"'\\ModelInterface|Klarna\\Model\\ModelInterface|g' {} +
+done
 
-composer install
-composer require "tuutti/php-klarna-base:~1.0"
+# Add base dependency without having to use composer.
+echo "$( jq --indent 4 '.require += {"tuutti/php-klarna-base": "~1.0"}' composer.json )" > composer.json
 
 for FILE in ApiException Configuration HeaderSelector ObjectSerializer
 do
