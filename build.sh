@@ -1,11 +1,6 @@
 #!/bin/bash
 NAMESPACE=Payments
 NAME=${NAMESPACE,,}
-COMMAND=openapi-generator-cli
-
-if [ -n $CI ]; then
-  COMMAND=java /opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
-fi
 
 curl --compressed https://developers.klarna.com/api/specs/$NAME.json > $NAME.json
 
@@ -14,7 +9,13 @@ echo "$( jq '.security = [{ "basicAuth": [] }]' $NAME.json )" > $NAME.json
 echo "$( jq '.securityDefinitions = { "basicAuth": { "type": "basic" }}' $NAME.json )" > $NAME.json
 
 # Generate the client.
-openapi-generator-cli generate -c $NAME.config.json -i $NAME.json -g php -o ../$NAME --skip-validate-spec --git-host=gitlab.com --git-repo-id=php-klarna-$NAME --git-user-id=tuutti --global-property apiTests=false
+ARGS="-c $NAME.config.json -i $NAME.json -g php -o ../$NAME --skip-validate-spec --git-host=gitlab.com --git-repo-id=php-klarna-$NAME --git-user-id=tuutti --global-property apiTests=false"
+
+if [ -n "$CI" ]; then
+  java -jar /opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar generate $ARGS
+else
+  openapi-generator-cli generate $ARGS
+fi
 
 # Convert all Models to extend and use same interface.
 for EXT in php md
