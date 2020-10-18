@@ -2,7 +2,7 @@
 NAMESPACE=Payments
 NAME=${NAMESPACE,,}
 
-curl --compressed https://developers.klarna.com/api/specs/$NAME.json | jq > $NAME.json
+curl --compressed https://developers.klarna.com/api/specs/$NAME.json > $NAME.json
 
 # Fix security headers schema.
 echo "$( jq '.security = [{ "basicAuth": [] }]' $NAME.json )" > $NAME.json
