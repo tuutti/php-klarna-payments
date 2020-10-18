@@ -1,0 +1,8 @@
+{
+    "invokerPackage": "Klarna\\Payments",
+    "packagePath": "php-klarna",
+    "packageName": "php-klarna",
+    "srcBasePath": "src",
+    "composerVendorName": "php-klarna",
+    "composerProjectName": "client"
+}
