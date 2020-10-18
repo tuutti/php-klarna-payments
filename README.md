@@ -1,4 +1,4 @@
-# php-klarna
+# php-klarna-payments
 
 API spec
 
@@ -38,7 +38,7 @@ Then run `composer install`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to/php-klarna/vendor/autoload.php');
+    require_once('/path/to/php-klarna-payments/vendor/autoload.php');
 ```
 
 ## Tests
