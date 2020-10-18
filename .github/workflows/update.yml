@@ -10,7 +10,7 @@ jobs:
   update-definitions:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/tuutti/klarna-base-generator
+      image: ghcr.io/tuutti/klarna-base-generator:1.0
     steps:
       - uses: actions/checkout@v2
       - name: Update schemas
