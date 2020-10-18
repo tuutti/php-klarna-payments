@@ -1,6 +1,11 @@
 #!/bin/bash
 NAMESPACE=Payments
 NAME=${NAMESPACE,,}
+COMMAND=openapi-generator-cli
+
+if [ -n $CI ]; then
+  COMMAND=java /opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
+fi
 
 curl --compressed https://developers.klarna.com/api/specs/$NAME.json > $NAME.json
 
