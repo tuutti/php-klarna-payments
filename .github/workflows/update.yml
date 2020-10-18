@@ -2,7 +2,7 @@ name: Update OAS definitions
 on:
   push:
     branches:
-      - master
+      - main
 
   schedule:
     - cron:  '0 2 * * *'
