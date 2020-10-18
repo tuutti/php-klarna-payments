@@ -13,12 +13,12 @@ jobs:
       image: ghcr.io/tuutti/klarna-base-generator:1.0
     steps:
       - uses: actions/checkout@v2
-
+        with:
+          fetch-depth: 0
       - name: Update schemas
         run: |
           ./build.sh
           ls -la
-          git status
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
@@ -33,4 +33,3 @@ jobs:
 
               [1]: https://github.com/peter-evans/create-pull-request
             branch: update-definitions
-            base: main
