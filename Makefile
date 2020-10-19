@@ -1,8 +1,9 @@
 SHELL := /bin/bash
 PHONY :=
-NAMESPACE = Payments
-NAME = payments
 COMMAND = openapi-generator-cli
+
+include .env
+export
 
 default: all
 
