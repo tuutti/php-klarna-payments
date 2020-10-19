@@ -4,10 +4,6 @@ NAMESPACE = Payments
 NAME = payments
 COMMAND = openapi-generator-cli
 
-ifeq ($(CI),true)
-	COMMAND = ./node_modules/.bin/openapi-generate-cli
-endif
-
 default: all
 
 PHONY += download-schema
