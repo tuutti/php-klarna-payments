@@ -44,7 +44,7 @@ define fix-shared-files
 endef
 
 define fix-interfaces
-	@find . -type f -name '*.$(1)' -exec sed -i 's/\<interface ModelInterface\>/interface ModelInterface extends \\Klarna\\Model\\ModelInterface/g' {} +
+	@find . -type f -name '*.$(1)' -exec sed -i 's/interface ModelInterface$$/interface ModelInterface extends \\Klarna\\Model\\ModelInterface/g' {} +
 	@find . -type f -name '*.$(1)' -exec sed -i 's|Klarna\\Model\\$(NAMESPACE)\\ModelInterface|Klarna\\Model\\ModelInterface|g' {} +
 endef
 
