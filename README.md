@@ -22,7 +22,7 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://gitlab.com/tuutti/php-klarna-payments.git"
+      "url": "https://github.com/tuutti/php-klarna-payments.git"
     }
   ],
   "require": {
