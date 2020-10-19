@@ -39,7 +39,7 @@ PHONY += all
 all: download-schema fix-schema build-client fix-models fix-composer-json fix-shared-files
 
 define fix-shared-files
-	@rm src/$(1).php
+	@rm src/$(1).php || true
 	@find . -type f -name '*' -exec sed -i 's|Klarna\\$(NAMESPACE)\\$(1)|Klarna\\$(1)|g' {} +
 endef
 
