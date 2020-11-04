@@ -207,14 +207,8 @@ class Order implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['fraud_status'] === null) {
-            $invalidProperties[] = "'fraud_status' can't be null";
-        }
         if ($this->container['order_id'] === null) {
             $invalidProperties[] = "'order_id' can't be null";
-        }
-        if ($this->container['redirect_url'] === null) {
-            $invalidProperties[] = "'redirect_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -258,7 +252,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Gets fraud_status
      *
-     * @return string
+     * @return string|null
      */
     public function getFraudStatus()
     {
@@ -268,7 +262,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets fraud_status
      *
-     * @param string $fraud_status Fraud status for the order. Either ACCEPTED or PENDING. If ACCEPTED, the order could be captured. If PENDING, please wait till you receive the notification from Klarna in the notification URL that the order has been approved. You can find additional information here.
+     * @param string|null $fraud_status Fraud status for the order. Either ACCEPTED or PENDING. If ACCEPTED, the order could be captured. If PENDING, please wait till you receive the notification from Klarna in the notification URL that the order has been approved. You can find additional information here.
      *
      * @return $this
      */
@@ -306,7 +300,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Gets redirect_url
      *
-     * @return string
+     * @return string|null
      */
     public function getRedirectUrl()
     {
@@ -316,7 +310,7 @@ class Order implements ModelInterface, ArrayAccess
     /**
      * Sets redirect_url
      *
-     * @param string $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL to which the merchant should redirect the customer to. Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience. It is a spontaneous step and does not harm the customer’s experience.
+     * @param string|null $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL to which the merchant should redirect the customer to. Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience. It is a spontaneous step and does not harm the customer’s experience.
      *
      * @return $this
      */
