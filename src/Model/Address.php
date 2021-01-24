@@ -604,7 +604,7 @@ class Address implements ModelInterface, ArrayAccess
     /**
      * Sets phone
      *
-     * @param string|null $phone Phone number. Preferrably a mobile phone number.
+     * @param string|null $phone Phone number. Preferably a mobile phone number.
      *
      * @return $this
      */
