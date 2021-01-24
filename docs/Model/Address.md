@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **family_name** | **string** | Customer’s family name. | [optional] 
 **given_name** | **string** | Customer’s first name. | [optional] 
 **organization_name** | **string** | Organization name (if applicable). Only applicable for B2B customers. | [optional] 
-**phone** | **string** | Phone number. Preferrably a mobile phone number. | [optional] 
+**phone** | **string** | Phone number. Preferably a mobile phone number. | [optional] 
 **postal_code** | **string** | Customer’s postal code. Validation according to Universal Postal Union addressing systems. E.g. 12345, W1G OPW. | [optional] 
 **region** | **string** | Customer’s region or state - Mandatory for US and AU market. Validations according to ISO 3166-2 format, e.g. OH, NJ, etc. | [optional] 
 **street_address** | **string** | Customer’s street address. Regional formatting is required, as follows: UK/US/FR: 33 Cavendish Square Rest of EU: De Ruijterkade 7 | [optional] 
