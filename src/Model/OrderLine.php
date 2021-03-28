@@ -363,7 +363,7 @@ class OrderLine implements ModelInterface, ArrayAccess
     /**
      * Sets image_url
      *
-     * @param string|null $image_url URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters)
+     * @param string|null $image_url URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters).  A minimum of 250x250 px resolution is recommended for the image to look good in the Klarna app, and below 50x50 px won't even show. We recommend using a good sized image (650x650 px or more), however the file size must not exceed 12MB.
      *
      * @return $this
      */

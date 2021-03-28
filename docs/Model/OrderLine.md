@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**image_url** | **string** | URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters) | [optional] 
+**image_url** | **string** | URL to an image that can be later embedded in communications between Klarna and the customer. (max 1024 characters).  A minimum of 250x250 px resolution is recommended for the image to look good in the Klarna app, and below 50x50 px won&#39;t even show. We recommend using a good sized image (650x650 px or more), however the file size must not exceed 12MB. | [optional] 
 **merchant_data** | **string** | Used for storing merchant&#39;s internal order number or other reference. Pass through field. (max 255 characters) | [optional] 
 **name** | **string** | Descriptive name of the order line item. | 
 **product_identifiers** | [**\Klarna\Payments\Model\ProductIdentifiers**](ProductIdentifiers.md) |  | [optional] 
