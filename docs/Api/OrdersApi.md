@@ -1,18 +1,19 @@
 # Klarna\Payments\OrdersApi
 
-All URIs are relative to *https://api.klarna.com*
+All URIs are relative to https://api.klarna.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelAuthorization**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an existing authorization
-[**createOrder**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create a new order
-[**purchaseToken**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token
+[**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an existing authorization
+[**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create a new order
+[**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token
 
 
+## `cancelAuthorization()`
 
-## cancelAuthorization
-
-> cancelAuthorization($authorization_token)
+```php
+cancelAuthorization($authorization_token)
+```
 
 Cancel an existing authorization
 
@@ -37,18 +38,16 @@ $apiInstance = new Klarna\Payments\Api\OrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$authorization_token = 'authorization_token_example'; // string | 
+$authorization_token = 'authorization_token_example'; // string
 
 try {
     $apiInstance->cancelAuthorization($authorization_token);
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->cancelAuthorization: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -67,14 +66,15 @@ void (empty response body)
 - **Content-Type**: Not defined
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createOrder()`
 
-## createOrder
-
-> \Klarna\Payments\Model\Order createOrder($authorization_token, $body)
+```php
+createOrder($authorization_token, $body): \Klarna\Payments\Model\Order
+```
 
 Create a new order
 
@@ -99,8 +99,8 @@ $apiInstance = new Klarna\Payments\Api\OrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$authorization_token = 'authorization_token_example'; // string | 
-$body = new \Klarna\Payments\Model\CreateOrderRequest(); // \Klarna\Payments\Model\CreateOrderRequest | 
+$authorization_token = 'authorization_token_example'; // string
+$body = new \Klarna\Payments\Model\CreateOrderRequest(); // \Klarna\Payments\Model\CreateOrderRequest
 
 try {
     $result = $apiInstance->createOrder($authorization_token, $body);
@@ -108,11 +108,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->createOrder: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -129,17 +127,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `purchaseToken()`
 
-## purchaseToken
-
-> \Klarna\Payments\Model\CustomerTokenCreationResponse purchaseToken($authorization_token, $body)
+```php
+purchaseToken($authorization_token, $body): \Klarna\Payments\Model\CustomerTokenCreationResponse
+```
 
 Generate a consumer token
 
@@ -164,8 +163,8 @@ $apiInstance = new Klarna\Payments\Api\OrdersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$authorization_token = 'authorization_token_example'; // string | 
-$body = new \Klarna\Payments\Model\CustomerTokenCreationRequest(); // \Klarna\Payments\Model\CustomerTokenCreationRequest | 
+$authorization_token = 'authorization_token_example'; // string
+$body = new \Klarna\Payments\Model\CustomerTokenCreationRequest(); // \Klarna\Payments\Model\CustomerTokenCreationRequest
 
 try {
     $result = $apiInstance->purchaseToken($authorization_token, $body);
@@ -173,11 +172,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling OrdersApi->purchaseToken: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -194,10 +191,9 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-
