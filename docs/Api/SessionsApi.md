@@ -1,18 +1,19 @@
 # Klarna\Payments\SessionsApi
 
-All URIs are relative to *https://api.klarna.com*
+All URIs are relative to https://api.klarna.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCreditSession**](SessionsApi.md#createCreditSession) | **POST** /payments/v1/sessions | Create a new credit session
-[**readCreditSession**](SessionsApi.md#readCreditSession) | **GET** /payments/v1/sessions/{session_id} | Read an existing credit session
-[**updateCreditSession**](SessionsApi.md#updateCreditSession) | **POST** /payments/v1/sessions/{session_id} | Update an existing credit session
+[**createCreditSession()**](SessionsApi.md#createCreditSession) | **POST** /payments/v1/sessions | Create a new credit session
+[**readCreditSession()**](SessionsApi.md#readCreditSession) | **GET** /payments/v1/sessions/{session_id} | Read an existing credit session
+[**updateCreditSession()**](SessionsApi.md#updateCreditSession) | **POST** /payments/v1/sessions/{session_id} | Update an existing credit session
 
 
+## `createCreditSession()`
 
-## createCreditSession
-
-> \Klarna\Payments\Model\MerchantSession createCreditSession($body)
+```php
+createCreditSession($body): \Klarna\Payments\Model\MerchantSession
+```
 
 Create a new credit session
 
@@ -45,11 +46,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SessionsApi->createCreditSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -65,17 +64,18 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `readCreditSession()`
 
-## readCreditSession
-
-> \Klarna\Payments\Model\Session readCreditSession($session_id)
+```php
+readCreditSession($session_id): \Klarna\Payments\Model\Session
+```
 
 Read an existing credit session
 
@@ -108,11 +108,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SessionsApi->readCreditSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -129,16 +127,17 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `updateCreditSession()`
 
-## updateCreditSession
-
-> updateCreditSession($session_id, $body)
+```php
+updateCreditSession($session_id, $body)
+```
 
 Update an existing credit session
 
@@ -171,11 +170,9 @@ try {
 } catch (Exception $e) {
     echo 'Exception when calling SessionsApi->updateCreditSession: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
-
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -192,10 +189,9 @@ void (empty response body)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
+- **Content-Type**: `application/json`
 - **Accept**: Not defined
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-
