@@ -55,7 +55,6 @@ jobs:
           composer require "drush/drush ^10.0"
           composer run-script drupal-phpunit-upgrade
           php -d sendmail_path=$(which true); vendor/bin/drush --yes -v site-install minimal --db-url="$SIMPLETEST_DB"
-          vendor/bin/drush -y en simpletest
 
       # Test library against drupal/commerce_klarna_payments module.
       - name: Run PHPUnit tests
@@ -63,4 +62,4 @@ jobs:
           cd $DRUPAL_ROOT
           vendor/bin/drush runserver $SIMPLETEST_BASE_URL > /dev/null 2>&1 &
           chromedriver --port=4444 > /dev/null 2>&1 &
-          php ./core/scripts/run-tests.sh --php /usr/local/bin/php --color --verbose --url $SIMPLETEST_BASE_URL commerce_klarna_payments
+          php ./core/scripts/run-tests.sh --php /usr/local/bin/php --color --verbose --sqlite /tmp/test.sqlite --url $SIMPLETEST_BASE_URL commerce_klarna_payments
