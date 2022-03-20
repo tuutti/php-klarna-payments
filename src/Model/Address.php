@@ -390,7 +390,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets attention
      *
-     * @param string|null $attention ‘Attn.’ - optional parameter.
+     * @param string|null $attention ‘Attn.’ (if applicable). Only applicable for B2B customers.
      *
      * @return self
      */
