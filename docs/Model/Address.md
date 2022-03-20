@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**attention** | **string** | ‘Attn.’ - optional parameter. | [optional]
+**attention** | **string** | ‘Attn.’ (if applicable). Only applicable for B2B customers. | [optional]
 **city** | **string** | Customer’s city. | [optional]
 **country** | **string** | Customer’s country. This value overrides the purchase country if they are different. Should follow the standard of ISO 3166 alpha-2. E.g. GB, US, DE, SE. | [optional]
 **email** | **string** | Customer’s email address. | [optional]
