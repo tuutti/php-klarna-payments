@@ -62,7 +62,9 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         'brand' => 'string',
         'category_path' => 'string',
         'global_trade_item_number' => 'string',
-        'manufacturer_part_number' => 'string'
+        'manufacturer_part_number' => 'string',
+        'color' => 'string',
+        'size' => 'string'
     ];
 
     /**
@@ -76,7 +78,9 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         'brand' => null,
         'category_path' => null,
         'global_trade_item_number' => null,
-        'manufacturer_part_number' => null
+        'manufacturer_part_number' => null,
+        'color' => null,
+        'size' => null
     ];
 
     /**
@@ -109,7 +113,9 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         'brand' => 'brand',
         'category_path' => 'category_path',
         'global_trade_item_number' => 'global_trade_item_number',
-        'manufacturer_part_number' => 'manufacturer_part_number'
+        'manufacturer_part_number' => 'manufacturer_part_number',
+        'color' => 'color',
+        'size' => 'size'
     ];
 
     /**
@@ -121,7 +127,9 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         'brand' => 'setBrand',
         'category_path' => 'setCategoryPath',
         'global_trade_item_number' => 'setGlobalTradeItemNumber',
-        'manufacturer_part_number' => 'setManufacturerPartNumber'
+        'manufacturer_part_number' => 'setManufacturerPartNumber',
+        'color' => 'setColor',
+        'size' => 'setSize'
     ];
 
     /**
@@ -133,7 +141,9 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         'brand' => 'getBrand',
         'category_path' => 'getCategoryPath',
         'global_trade_item_number' => 'getGlobalTradeItemNumber',
-        'manufacturer_part_number' => 'getManufacturerPartNumber'
+        'manufacturer_part_number' => 'getManufacturerPartNumber',
+        'color' => 'getColor',
+        'size' => 'getSize'
     ];
 
     /**
@@ -197,6 +207,8 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['category_path'] = $data['category_path'] ?? null;
         $this->container['global_trade_item_number'] = $data['global_trade_item_number'] ?? null;
         $this->container['manufacturer_part_number'] = $data['manufacturer_part_number'] ?? null;
+        $this->container['color'] = $data['color'] ?? null;
+        $this->container['size'] = $data['size'] ?? null;
     }
 
     /**
@@ -238,6 +250,22 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
 
         if (!is_null($this->container['manufacturer_part_number']) && (mb_strlen($this->container['manufacturer_part_number']) < 0)) {
             $invalidProperties[] = "invalid value for 'manufacturer_part_number', the character length must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['color']) && (mb_strlen($this->container['color']) > 64)) {
+            $invalidProperties[] = "invalid value for 'color', the character length must be smaller than or equal to 64.";
+        }
+
+        if (!is_null($this->container['color']) && (mb_strlen($this->container['color']) < 0)) {
+            $invalidProperties[] = "invalid value for 'color', the character length must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['size']) && (mb_strlen($this->container['size']) > 64)) {
+            $invalidProperties[] = "invalid value for 'size', the character length must be smaller than or equal to 64.";
+        }
+
+        if (!is_null($this->container['size']) && (mb_strlen($this->container['size']) < 0)) {
+            $invalidProperties[] = "invalid value for 'size', the character length must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -375,6 +403,68 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
         }
 
         $this->container['manufacturer_part_number'] = $manufacturer_part_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets color
+     *
+     * @return string|null
+     */
+    public function getColor()
+    {
+        return $this->container['color'];
+    }
+
+    /**
+     * Sets color
+     *
+     * @param string|null $color Color to be shown to the end customer (max 64 characters).
+     *
+     * @return self
+     */
+    public function setColor($color)
+    {
+        if (!is_null($color) && (mb_strlen($color) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $color when calling ProductIdentifiers., must be smaller than or equal to 64.');
+        }
+        if (!is_null($color) && (mb_strlen($color) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $color when calling ProductIdentifiers., must be bigger than or equal to 0.');
+        }
+
+        $this->container['color'] = $color;
+
+        return $this;
+    }
+
+    /**
+     * Gets size
+     *
+     * @return string|null
+     */
+    public function getSize()
+    {
+        return $this->container['size'];
+    }
+
+    /**
+     * Sets size
+     *
+     * @param string|null $size Size to be shown to the end customer (max 64 characters).
+     *
+     * @return self
+     */
+    public function setSize($size)
+    {
+        if (!is_null($size) && (mb_strlen($size) > 64)) {
+            throw new \InvalidArgumentException('invalid length for $size when calling ProductIdentifiers., must be smaller than or equal to 64.');
+        }
+        if (!is_null($size) && (mb_strlen($size) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $size when calling ProductIdentifiers., must be bigger than or equal to 0.');
+        }
+
+        $this->container['size'] = $size;
 
         return $this;
     }
