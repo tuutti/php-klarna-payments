@@ -246,10 +246,6 @@ class CustomerTokenCreationRequest implements ModelInterface, ArrayAccess, \Json
             $invalidProperties[] = "invalid value for 'description', the character length must be smaller than or equal to 255.";
         }
 
-        if ((mb_strlen($this->container['description']) < 0)) {
-            $invalidProperties[] = "invalid value for 'description', the character length must be bigger than or equal to 0.";
-        }
-
         if ($this->container['intended_use'] === null) {
             $invalidProperties[] = "'intended_use' can't be null";
         }
@@ -367,9 +363,6 @@ class CustomerTokenCreationRequest implements ModelInterface, ArrayAccess, \Json
     {
         if ((mb_strlen($description) > 255)) {
             throw new \InvalidArgumentException('invalid length for $description when calling CustomerTokenCreationRequest., must be smaller than or equal to 255.');
-        }
-        if ((mb_strlen($description) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $description when calling CustomerTokenCreationRequest., must be bigger than or equal to 0.');
         }
 
         $this->container['description'] = $description;

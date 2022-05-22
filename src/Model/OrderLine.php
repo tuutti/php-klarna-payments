@@ -276,8 +276,8 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'image_url', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) > 255)) {
-            $invalidProperties[] = "invalid value for 'merchant_data', the character length must be smaller than or equal to 255.";
+        if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) > 1024)) {
+            $invalidProperties[] = "invalid value for 'merchant_data', the character length must be smaller than or equal to 1024.";
         }
 
         if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) < 0)) {
@@ -310,12 +310,28 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'quantity', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 64)) {
-            $invalidProperties[] = "invalid value for 'reference', the character length must be smaller than or equal to 64.";
+        if (!is_null($this->container['quantity_unit']) && (mb_strlen($this->container['quantity_unit']) > 8)) {
+            $invalidProperties[] = "invalid value for 'quantity_unit', the character length must be smaller than or equal to 8.";
+        }
+
+        if (!is_null($this->container['quantity_unit']) && (mb_strlen($this->container['quantity_unit']) < 1)) {
+            $invalidProperties[] = "invalid value for 'quantity_unit', the character length must be bigger than or equal to 1.";
+        }
+
+        if (!is_null($this->container['reference']) && (mb_strlen($this->container['reference']) > 256)) {
+            $invalidProperties[] = "invalid value for 'reference', the character length must be smaller than or equal to 256.";
         }
 
         if (!is_null($this->container['reference']) && (mb_strlen($this->container['reference']) < 0)) {
             $invalidProperties[] = "invalid value for 'reference', the character length must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['tax_rate']) && ($this->container['tax_rate'] > 10000)) {
+            $invalidProperties[] = "invalid value for 'tax_rate', must be smaller than or equal to 10000.";
+        }
+
+        if (!is_null($this->container['tax_rate']) && ($this->container['tax_rate'] < 0)) {
+            $invalidProperties[] = "invalid value for 'tax_rate', must be bigger than or equal to 0.";
         }
 
         if ($this->container['total_amount'] === null) {
@@ -395,14 +411,14 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets merchant_data
      *
-     * @param string|null $merchant_data Used for storing merchant's internal order number or other reference. Pass through field. (max 255 characters)
+     * @param string|null $merchant_data Used for storing merchant's internal order number or other reference. Pass through field. (max 1024 characters)
      *
      * @return self
      */
     public function setMerchantData($merchant_data)
     {
-        if (!is_null($merchant_data) && (mb_strlen($merchant_data) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_data when calling OrderLine., must be smaller than or equal to 255.');
+        if (!is_null($merchant_data) && (mb_strlen($merchant_data) > 1024)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_data when calling OrderLine., must be smaller than or equal to 1024.');
         }
         if (!is_null($merchant_data) && (mb_strlen($merchant_data) < 0)) {
             throw new \InvalidArgumentException('invalid length for $merchant_data when calling OrderLine., must be bigger than or equal to 0.');
@@ -547,6 +563,13 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setQuantityUnit($quantity_unit)
     {
+        if (!is_null($quantity_unit) && (mb_strlen($quantity_unit) > 8)) {
+            throw new \InvalidArgumentException('invalid length for $quantity_unit when calling OrderLine., must be smaller than or equal to 8.');
+        }
+        if (!is_null($quantity_unit) && (mb_strlen($quantity_unit) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $quantity_unit when calling OrderLine., must be bigger than or equal to 1.');
+        }
+
         $this->container['quantity_unit'] = $quantity_unit;
 
         return $this;
@@ -565,14 +588,14 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets reference
      *
-     * @param string|null $reference Client facing article number, SKU or similar. Max length is 64 characters.
+     * @param string|null $reference Client facing article number, SKU or similar. Max length is 256 characters.
      *
      * @return self
      */
     public function setReference($reference)
     {
-        if (!is_null($reference) && (mb_strlen($reference) > 64)) {
-            throw new \InvalidArgumentException('invalid length for $reference when calling OrderLine., must be smaller than or equal to 64.');
+        if (!is_null($reference) && (mb_strlen($reference) > 256)) {
+            throw new \InvalidArgumentException('invalid length for $reference when calling OrderLine., must be smaller than or equal to 256.');
         }
         if (!is_null($reference) && (mb_strlen($reference) < 0)) {
             throw new \InvalidArgumentException('invalid length for $reference when calling OrderLine., must be bigger than or equal to 0.');
@@ -602,6 +625,14 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setTaxRate($tax_rate)
     {
+
+        if (!is_null($tax_rate) && ($tax_rate > 10000)) {
+            throw new \InvalidArgumentException('invalid value for $tax_rate when calling OrderLine., must be smaller than or equal to 10000.');
+        }
+        if (!is_null($tax_rate) && ($tax_rate < 0)) {
+            throw new \InvalidArgumentException('invalid value for $tax_rate when calling OrderLine., must be bigger than or equal to 0.');
+        }
+
         $this->container['tax_rate'] = $tax_rate;
 
         return $this;

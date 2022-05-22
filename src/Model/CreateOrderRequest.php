@@ -68,7 +68,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'custom_payment_method_ids' => 'string[]',
         'customer' => '\Klarna\Payments\Model\Customer',
         'design' => 'string',
-        'expires_at' => '\Klarna\Payments\Model\Instant',
+        'expires_at' => '\DateTime',
         'locale' => 'string',
         'merchant_data' => 'string',
         'merchant_reference1' => 'string',
@@ -102,7 +102,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
         'custom_payment_method_ids' => null,
         'customer' => null,
         'design' => null,
-        'expires_at' => null,
+        'expires_at' => 'date-time',
         'locale' => null,
         'merchant_data' => null,
         'merchant_reference1' => null,
@@ -358,8 +358,8 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
             $invalidProperties[] = "invalid value for 'locale', must be conform to the pattern /^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/.";
         }
 
-        if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) > 1024)) {
-            $invalidProperties[] = "invalid value for 'merchant_data', the character length must be smaller than or equal to 1024.";
+        if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) > 6000)) {
+            $invalidProperties[] = "invalid value for 'merchant_data', the character length must be smaller than or equal to 6000.";
         }
 
         if (!is_null($this->container['merchant_data']) && (mb_strlen($this->container['merchant_data']) < 0)) {
@@ -668,7 +668,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets expires_at
      *
-     * @return \Klarna\Payments\Model\Instant|null
+     * @return \DateTime|null
      */
     public function getExpiresAt()
     {
@@ -678,7 +678,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets expires_at
      *
-     * @param \Klarna\Payments\Model\Instant|null $expires_at expires_at
+     * @param \DateTime|null $expires_at Session expiration date
      *
      * @return self
      */
@@ -731,14 +731,14 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets merchant_data
      *
-     * @param string|null $merchant_data Pass through field to send any information about the order to be used later for reference while retrieving the order details (max 1024 characters)
+     * @param string|null $merchant_data Pass through field to send any information about the order to be used later for reference while retrieving the order details (max 6000 characters)
      *
      * @return self
      */
     public function setMerchantData($merchant_data)
     {
-        if (!is_null($merchant_data) && (mb_strlen($merchant_data) > 1024)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_data when calling CreateOrderRequest., must be smaller than or equal to 1024.');
+        if (!is_null($merchant_data) && (mb_strlen($merchant_data) > 6000)) {
+            throw new \InvalidArgumentException('invalid length for $merchant_data when calling CreateOrderRequest., must be smaller than or equal to 6000.');
         }
         if (!is_null($merchant_data) && (mb_strlen($merchant_data) < 0)) {
             throw new \InvalidArgumentException('invalid length for $merchant_data when calling CreateOrderRequest., must be bigger than or equal to 0.');

@@ -59,7 +59,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'days' => 'int',
+        'number_of_days' => 'int',
         'number_of_installments' => 'int',
         'type' => 'string'
     ];
@@ -72,8 +72,8 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'days' => 'int64',
-        'number_of_installments' => 'int64',
+        'number_of_days' => 'int32',
+        'number_of_installments' => 'int32',
         'type' => null
     ];
 
@@ -104,7 +104,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $attributeMap = [
-        'days' => 'days',
+        'number_of_days' => 'number_of_days',
         'number_of_installments' => 'number_of_installments',
         'type' => 'type'
     ];
@@ -115,7 +115,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $setters = [
-        'days' => 'setDays',
+        'number_of_days' => 'setNumberOfDays',
         'number_of_installments' => 'setNumberOfInstallments',
         'type' => 'setType'
     ];
@@ -126,7 +126,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
      * @var string[]
      */
     protected static $getters = [
-        'days' => 'getDays',
+        'number_of_days' => 'getNumberOfDays',
         'number_of_installments' => 'getNumberOfInstallments',
         'type' => 'getType'
     ];
@@ -223,7 +223,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function __construct(array $data = null)
     {
-        $this->container['days'] = $data['days'] ?? null;
+        $this->container['number_of_days'] = $data['number_of_days'] ?? null;
         $this->container['number_of_installments'] = $data['number_of_installments'] ?? null;
         $this->container['type'] = $data['type'] ?? null;
     }
@@ -265,25 +265,25 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
 
 
     /**
-     * Gets days
+     * Gets number_of_days
      *
      * @return int|null
      */
-    public function getDays()
+    public function getNumberOfDays()
     {
-        return $this->container['days'];
+        return $this->container['number_of_days'];
     }
 
     /**
-     * Sets days
+     * Sets number_of_days
      *
-     * @param int|null $days days
+     * @param int|null $number_of_days number_of_days
      *
      * @return self
      */
-    public function setDays($days)
+    public function setNumberOfDays($number_of_days)
     {
-        $this->container['days'] = $days;
+        $this->container['number_of_days'] = $number_of_days;
 
         return $this;
     }
