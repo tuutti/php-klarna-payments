@@ -284,6 +284,10 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if (!is_null($this->container['type']) && !preg_match("/^(person|organization)$/", $this->container['type'])) {
+            $invalidProperties[] = "invalid value for 'type', must be conform to the pattern /^(person|organization)$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -413,7 +417,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets organization_entity_type
      *
-     * @param string|null $organization_entity_type Organization entity type. Only applicable for B2B customers. The following values are avaiable:
+     * @param string|null $organization_entity_type Organization entity type. Only applicable for B2B customers. The following values are available:
      *
      * @return self
      */
@@ -501,6 +505,11 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setType($type)
     {
+
+        if (!is_null($type) && (!preg_match("/^(person|organization)$/", $type))) {
+            throw new \InvalidArgumentException("invalid value for $type when calling Customer., must conform to the pattern /^(person|organization)$/.");
+        }
+
         $this->container['type'] = $type;
 
         return $this;

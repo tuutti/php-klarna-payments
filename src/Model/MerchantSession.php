@@ -205,9 +205,25 @@ class MerchantSession implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['client_token'] === null) {
             $invalidProperties[] = "'client_token' can't be null";
         }
+        if ((mb_strlen($this->container['client_token']) > 4096)) {
+            $invalidProperties[] = "invalid value for 'client_token', the character length must be smaller than or equal to 4096.";
+        }
+
+        if ((mb_strlen($this->container['client_token']) < 0)) {
+            $invalidProperties[] = "invalid value for 'client_token', the character length must be bigger than or equal to 0.";
+        }
+
         if ($this->container['session_id'] === null) {
             $invalidProperties[] = "'session_id' can't be null";
         }
+        if ((mb_strlen($this->container['session_id']) > 255)) {
+            $invalidProperties[] = "invalid value for 'session_id', the character length must be smaller than or equal to 255.";
+        }
+
+        if ((mb_strlen($this->container['session_id']) < 0)) {
+            $invalidProperties[] = "invalid value for 'session_id', the character length must be bigger than or equal to 0.";
+        }
+
         return $invalidProperties;
     }
 
@@ -242,6 +258,13 @@ class MerchantSession implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setClientToken($client_token)
     {
+        if ((mb_strlen($client_token) > 4096)) {
+            throw new \InvalidArgumentException('invalid length for $client_token when calling MerchantSession., must be smaller than or equal to 4096.');
+        }
+        if ((mb_strlen($client_token) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $client_token when calling MerchantSession., must be bigger than or equal to 0.');
+        }
+
         $this->container['client_token'] = $client_token;
 
         return $this;
@@ -292,6 +315,13 @@ class MerchantSession implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setSessionId($session_id)
     {
+        if ((mb_strlen($session_id) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $session_id when calling MerchantSession., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($session_id) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $session_id when calling MerchantSession., must be bigger than or equal to 0.');
+        }
+
         $this->container['session_id'] = $session_id;
 
         return $this;

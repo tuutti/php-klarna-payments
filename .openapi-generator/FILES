@@ -13,7 +13,6 @@ docs/Model/Customer.md
 docs/Model/CustomerTokenCreationRequest.md
 docs/Model/CustomerTokenCreationResponse.md
 docs/Model/ErrorV2.md
-docs/Model/Instant.md
 docs/Model/MerchantSession.md
 docs/Model/MerchantUrls.md
 docs/Model/Options.md
@@ -38,7 +37,6 @@ src/Model/Customer.php
 src/Model/CustomerTokenCreationRequest.php
 src/Model/CustomerTokenCreationResponse.php
 src/Model/ErrorV2.php
-src/Model/Instant.php
 src/Model/MerchantSession.php
 src/Model/MerchantUrls.php
 src/Model/ModelInterface.php

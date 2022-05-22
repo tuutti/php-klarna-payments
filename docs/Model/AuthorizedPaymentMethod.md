@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**days** | **int** |  | [optional]
+**number_of_days** | **int** |  | [optional]
 **number_of_installments** | **int** |  | [optional]
 **type** | **string** |  |
 

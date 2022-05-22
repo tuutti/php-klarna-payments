@@ -94,7 +94,6 @@ Class | Method | HTTP request | Description
 - [CustomerTokenCreationRequest](docs/Model/CustomerTokenCreationRequest.md)
 - [CustomerTokenCreationResponse](docs/Model/CustomerTokenCreationResponse.md)
 - [ErrorV2](docs/Model/ErrorV2.md)
-- [Instant](docs/Model/Instant.md)
 - [MerchantSession](docs/Model/MerchantSession.md)
 - [MerchantUrls](docs/Model/MerchantUrls.md)
 - [Options](docs/Model/Options.md)
