@@ -59,22 +59,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'acquiring_channel' => 'string',
-        'attachment' => '\Klarna\Payments\Model\Attachment',
         'authorization_token' => 'string',
         'auto_capture' => 'bool',
         'billing_address' => '\Klarna\Payments\Model\Address',
-        'client_token' => 'string',
         'custom_payment_method_ids' => 'string[]',
         'customer' => '\Klarna\Payments\Model\Customer',
-        'design' => 'string',
-        'expires_at' => '\DateTime',
         'locale' => 'string',
         'merchant_data' => 'string',
         'merchant_reference1' => 'string',
         'merchant_reference2' => 'string',
         'merchant_urls' => '\Klarna\Payments\Model\MerchantUrls',
-        'options' => '\Klarna\Payments\Model\Options',
         'order_amount' => 'int',
         'order_lines' => '\Klarna\Payments\Model\OrderLine[]',
         'order_tax_amount' => 'int',
@@ -93,22 +87,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'acquiring_channel' => null,
-        'attachment' => null,
         'authorization_token' => null,
         'auto_capture' => null,
         'billing_address' => null,
-        'client_token' => null,
         'custom_payment_method_ids' => null,
         'customer' => null,
-        'design' => null,
-        'expires_at' => 'date-time',
         'locale' => null,
         'merchant_data' => null,
         'merchant_reference1' => null,
         'merchant_reference2' => null,
         'merchant_urls' => null,
-        'options' => null,
         'order_amount' => 'int64',
         'order_lines' => null,
         'order_tax_amount' => 'int64',
@@ -146,22 +134,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'acquiring_channel' => 'acquiring_channel',
-        'attachment' => 'attachment',
         'authorization_token' => 'authorization_token',
         'auto_capture' => 'auto_capture',
         'billing_address' => 'billing_address',
-        'client_token' => 'client_token',
         'custom_payment_method_ids' => 'custom_payment_method_ids',
         'customer' => 'customer',
-        'design' => 'design',
-        'expires_at' => 'expires_at',
         'locale' => 'locale',
         'merchant_data' => 'merchant_data',
         'merchant_reference1' => 'merchant_reference1',
         'merchant_reference2' => 'merchant_reference2',
         'merchant_urls' => 'merchant_urls',
-        'options' => 'options',
         'order_amount' => 'order_amount',
         'order_lines' => 'order_lines',
         'order_tax_amount' => 'order_tax_amount',
@@ -178,22 +160,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'acquiring_channel' => 'setAcquiringChannel',
-        'attachment' => 'setAttachment',
         'authorization_token' => 'setAuthorizationToken',
         'auto_capture' => 'setAutoCapture',
         'billing_address' => 'setBillingAddress',
-        'client_token' => 'setClientToken',
         'custom_payment_method_ids' => 'setCustomPaymentMethodIds',
         'customer' => 'setCustomer',
-        'design' => 'setDesign',
-        'expires_at' => 'setExpiresAt',
         'locale' => 'setLocale',
         'merchant_data' => 'setMerchantData',
         'merchant_reference1' => 'setMerchantReference1',
         'merchant_reference2' => 'setMerchantReference2',
         'merchant_urls' => 'setMerchantUrls',
-        'options' => 'setOptions',
         'order_amount' => 'setOrderAmount',
         'order_lines' => 'setOrderLines',
         'order_tax_amount' => 'setOrderTaxAmount',
@@ -210,22 +186,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'acquiring_channel' => 'getAcquiringChannel',
-        'attachment' => 'getAttachment',
         'authorization_token' => 'getAuthorizationToken',
         'auto_capture' => 'getAutoCapture',
         'billing_address' => 'getBillingAddress',
-        'client_token' => 'getClientToken',
         'custom_payment_method_ids' => 'getCustomPaymentMethodIds',
         'customer' => 'getCustomer',
-        'design' => 'getDesign',
-        'expires_at' => 'getExpiresAt',
         'locale' => 'getLocale',
         'merchant_data' => 'getMerchantData',
         'merchant_reference1' => 'getMerchantReference1',
         'merchant_reference2' => 'getMerchantReference2',
         'merchant_urls' => 'getMerchantUrls',
-        'options' => 'getOptions',
         'order_amount' => 'getOrderAmount',
         'order_lines' => 'getOrderLines',
         'order_tax_amount' => 'getOrderTaxAmount',
@@ -308,22 +278,16 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['acquiring_channel'] = $data['acquiring_channel'] ?? null;
-        $this->container['attachment'] = $data['attachment'] ?? null;
         $this->container['authorization_token'] = $data['authorization_token'] ?? null;
         $this->container['auto_capture'] = $data['auto_capture'] ?? false;
         $this->container['billing_address'] = $data['billing_address'] ?? null;
-        $this->container['client_token'] = $data['client_token'] ?? null;
         $this->container['custom_payment_method_ids'] = $data['custom_payment_method_ids'] ?? null;
         $this->container['customer'] = $data['customer'] ?? null;
-        $this->container['design'] = $data['design'] ?? null;
-        $this->container['expires_at'] = $data['expires_at'] ?? null;
         $this->container['locale'] = $data['locale'] ?? null;
         $this->container['merchant_data'] = $data['merchant_data'] ?? null;
         $this->container['merchant_reference1'] = $data['merchant_reference1'] ?? null;
         $this->container['merchant_reference2'] = $data['merchant_reference2'] ?? null;
         $this->container['merchant_urls'] = $data['merchant_urls'] ?? null;
-        $this->container['options'] = $data['options'] ?? null;
         $this->container['order_amount'] = $data['order_amount'] ?? null;
         $this->container['order_lines'] = $data['order_lines'] ?? null;
         $this->container['order_tax_amount'] = $data['order_tax_amount'] ?? null;
@@ -342,14 +306,6 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        if (!is_null($this->container['client_token']) && (mb_strlen($this->container['client_token']) > 4096)) {
-            $invalidProperties[] = "invalid value for 'client_token', the character length must be smaller than or equal to 4096.";
-        }
-
-        if (!is_null($this->container['client_token']) && (mb_strlen($this->container['client_token']) < 0)) {
-            $invalidProperties[] = "invalid value for 'client_token', the character length must be bigger than or equal to 0.";
-        }
 
         if ($this->container['locale'] === null) {
             $invalidProperties[] = "'locale' can't be null";
@@ -443,54 +399,6 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets acquiring_channel
-     *
-     * @return string|null
-     */
-    public function getAcquiringChannel()
-    {
-        return $this->container['acquiring_channel'];
-    }
-
-    /**
-     * Sets acquiring_channel
-     *
-     * @param string|null $acquiring_channel The acquiring channel in which the session takes place. Ecommerce is default unless specified. Any other values should be defined in the agreement.
-     *
-     * @return self
-     */
-    public function setAcquiringChannel($acquiring_channel)
-    {
-        $this->container['acquiring_channel'] = $acquiring_channel;
-
-        return $this;
-    }
-
-    /**
-     * Gets attachment
-     *
-     * @return \Klarna\Payments\Model\Attachment|null
-     */
-    public function getAttachment()
-    {
-        return $this->container['attachment'];
-    }
-
-    /**
-     * Sets attachment
-     *
-     * @param \Klarna\Payments\Model\Attachment|null $attachment attachment
-     *
-     * @return self
-     */
-    public function setAttachment($attachment)
-    {
-        $this->container['attachment'] = $attachment;
-
-        return $this;
-    }
-
-    /**
      * Gets authorization_token
      *
      * @return string|null
@@ -563,37 +471,6 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     }
 
     /**
-     * Gets client_token
-     *
-     * @return string|null
-     */
-    public function getClientToken()
-    {
-        return $this->container['client_token'];
-    }
-
-    /**
-     * Sets client_token
-     *
-     * @param string|null $client_token Token to be passed to the JS client
-     *
-     * @return self
-     */
-    public function setClientToken($client_token)
-    {
-        if (!is_null($client_token) && (mb_strlen($client_token) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $client_token when calling CreateOrderRequest., must be smaller than or equal to 4096.');
-        }
-        if (!is_null($client_token) && (mb_strlen($client_token) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $client_token when calling CreateOrderRequest., must be bigger than or equal to 0.');
-        }
-
-        $this->container['client_token'] = $client_token;
-
-        return $this;
-    }
-
-    /**
      * Gets custom_payment_method_ids
      *
      * @return string[]|null
@@ -637,54 +514,6 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setCustomer($customer)
     {
         $this->container['customer'] = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Gets design
-     *
-     * @return string|null
-     */
-    public function getDesign()
-    {
-        return $this->container['design'];
-    }
-
-    /**
-     * Sets design
-     *
-     * @param string|null $design Design package to use in the session. This can only by used if a custom design has been implemented for Klarna Payments and agreed upon in the agreement. It might have a financial impact. Delivery manager will provide the value for the parameter.
-     *
-     * @return self
-     */
-    public function setDesign($design)
-    {
-        $this->container['design'] = $design;
-
-        return $this;
-    }
-
-    /**
-     * Gets expires_at
-     *
-     * @return \DateTime|null
-     */
-    public function getExpiresAt()
-    {
-        return $this->container['expires_at'];
-    }
-
-    /**
-     * Sets expires_at
-     *
-     * @param \DateTime|null $expires_at Session expiration date
-     *
-     * @return self
-     */
-    public function setExpiresAt($expires_at)
-    {
-        $this->container['expires_at'] = $expires_at;
 
         return $this;
     }
@@ -831,30 +660,6 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setMerchantUrls($merchant_urls)
     {
         $this->container['merchant_urls'] = $merchant_urls;
-
-        return $this;
-    }
-
-    /**
-     * Gets options
-     *
-     * @return \Klarna\Payments\Model\Options|null
-     */
-    public function getOptions()
-    {
-        return $this->container['options'];
-    }
-
-    /**
-     * Sets options
-     *
-     * @param \Klarna\Payments\Model\Options|null $options options
-     *
-     * @return self
-     */
-    public function setOptions($options)
-    {
-        $this->container['options'] = $options;
 
         return $this;
     }
