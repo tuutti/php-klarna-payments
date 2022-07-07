@@ -272,8 +272,25 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const ACQUIRING_CHANNEL_ECOMMERCE = 'ECOMMERCE';
+    const ACQUIRING_CHANNEL_IN_STORE = 'IN_STORE';
+    const ACQUIRING_CHANNEL_TELESALES = 'TELESALES';
     const STATUS_COMPLETE = 'complete';
     const STATUS_INCOMPLETE = 'incomplete';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getAcquiringChannelAllowableValues()
+    {
+        return [
+            self::ACQUIRING_CHANNEL_ECOMMERCE,
+            self::ACQUIRING_CHANNEL_IN_STORE,
+            self::ACQUIRING_CHANNEL_TELESALES,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -336,6 +353,15 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getAcquiringChannelAllowableValues();
+        if (!is_null($this->container['acquiring_channel']) && !in_array($this->container['acquiring_channel'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'acquiring_channel', must be one of '%s'",
+                $this->container['acquiring_channel'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         if (!is_null($this->container['client_token']) && (mb_strlen($this->container['client_token']) > 4096)) {
             $invalidProperties[] = "invalid value for 'client_token', the character length must be smaller than or equal to 4096.";
@@ -455,6 +481,16 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function setAcquiringChannel($acquiring_channel)
     {
+        $allowedValues = $this->getAcquiringChannelAllowableValues();
+        if (!is_null($acquiring_channel) && !in_array($acquiring_channel, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'acquiring_channel', must be one of '%s'",
+                    $acquiring_channel,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['acquiring_channel'] = $acquiring_channel;
 
         return $this;
