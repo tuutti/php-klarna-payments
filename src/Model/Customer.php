@@ -417,7 +417,7 @@ class Customer implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets organization_entity_type
      *
-     * @param string|null $organization_entity_type Organization entity type. Only applicable for B2B customers. The following values are available:
+     * @param string|null $organization_entity_type Organization entity type. Only applicable for B2B customers.
      *
      * @return self
      */
