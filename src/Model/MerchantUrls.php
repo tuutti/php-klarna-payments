@@ -61,7 +61,8 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         'confirmation' => 'string',
         'notification' => 'string',
-        'push' => 'string'
+        'push' => 'string',
+        'authorization' => 'string'
     ];
 
     /**
@@ -74,7 +75,8 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPIFormats = [
         'confirmation' => null,
         'notification' => null,
-        'push' => null
+        'push' => null,
+        'authorization' => null
     ];
 
     /**
@@ -106,7 +108,8 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $attributeMap = [
         'confirmation' => 'confirmation',
         'notification' => 'notification',
-        'push' => 'push'
+        'push' => 'push',
+        'authorization' => 'authorization'
     ];
 
     /**
@@ -117,7 +120,8 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $setters = [
         'confirmation' => 'setConfirmation',
         'notification' => 'setNotification',
-        'push' => 'setPush'
+        'push' => 'setPush',
+        'authorization' => 'setAuthorization'
     ];
 
     /**
@@ -128,7 +132,8 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $getters = [
         'confirmation' => 'getConfirmation',
         'notification' => 'getNotification',
-        'push' => 'getPush'
+        'push' => 'getPush',
+        'authorization' => 'getAuthorization'
     ];
 
     /**
@@ -191,6 +196,7 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['confirmation'] = $data['confirmation'] ?? null;
         $this->container['notification'] = $data['notification'] ?? null;
         $this->container['push'] = $data['push'] ?? null;
+        $this->container['authorization'] = $data['authorization'] ?? null;
     }
 
     /**
@@ -202,14 +208,11 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['confirmation'] === null) {
-            $invalidProperties[] = "'confirmation' can't be null";
-        }
-        if ((mb_strlen($this->container['confirmation']) > 2000)) {
+        if (!is_null($this->container['confirmation']) && (mb_strlen($this->container['confirmation']) > 2000)) {
             $invalidProperties[] = "invalid value for 'confirmation', the character length must be smaller than or equal to 2000.";
         }
 
-        if ((mb_strlen($this->container['confirmation']) < 0)) {
+        if (!is_null($this->container['confirmation']) && (mb_strlen($this->container['confirmation']) < 0)) {
             $invalidProperties[] = "invalid value for 'confirmation', the character length must be bigger than or equal to 0.";
         }
 
@@ -227,6 +230,14 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['push']) && (mb_strlen($this->container['push']) < 0)) {
             $invalidProperties[] = "invalid value for 'push', the character length must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['authorization']) && (mb_strlen($this->container['authorization']) > 2000)) {
+            $invalidProperties[] = "invalid value for 'authorization', the character length must be smaller than or equal to 2000.";
+        }
+
+        if (!is_null($this->container['authorization']) && (mb_strlen($this->container['authorization']) < 0)) {
+            $invalidProperties[] = "invalid value for 'authorization', the character length must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -247,7 +258,7 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets confirmation
      *
-     * @return string
+     * @return string|null
      */
     public function getConfirmation()
     {
@@ -257,16 +268,16 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets confirmation
      *
-     * @param string $confirmation URL of the merchant confirmation page. The consumer will be redirected back to the confirmation page if the consumer is sent to the redirect URL after placing the order. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL(max 2000 characters).
+     * @param string|null $confirmation URL of the merchant confirmation page. The consumer will be redirected back to the confirmation page if the consumer is sent to the redirect URL after placing the order. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL(max 2000 characters).
      *
      * @return self
      */
     public function setConfirmation($confirmation)
     {
-        if ((mb_strlen($confirmation) > 2000)) {
+        if (!is_null($confirmation) && (mb_strlen($confirmation) > 2000)) {
             throw new \InvalidArgumentException('invalid length for $confirmation when calling MerchantUrls., must be smaller than or equal to 2000.');
         }
-        if ((mb_strlen($confirmation) < 0)) {
+        if (!is_null($confirmation) && (mb_strlen($confirmation) < 0)) {
             throw new \InvalidArgumentException('invalid length for $confirmation when calling MerchantUrls., must be bigger than or equal to 0.');
         }
 
@@ -333,6 +344,37 @@ class MerchantUrls implements ModelInterface, ArrayAccess, \JsonSerializable
         }
 
         $this->container['push'] = $push;
+
+        return $this;
+    }
+
+    /**
+     * Gets authorization
+     *
+     * @return string|null
+     */
+    public function getAuthorization()
+    {
+        return $this->container['authorization'];
+    }
+
+    /**
+     * Sets authorization
+     *
+     * @param string|null $authorization URL for receiving the authorization token when payment is completed. Used for Authorization Callback.
+     *
+     * @return self
+     */
+    public function setAuthorization($authorization)
+    {
+        if (!is_null($authorization) && (mb_strlen($authorization) > 2000)) {
+            throw new \InvalidArgumentException('invalid length for $authorization when calling MerchantUrls., must be smaller than or equal to 2000.');
+        }
+        if (!is_null($authorization) && (mb_strlen($authorization) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $authorization when calling MerchantUrls., must be bigger than or equal to 0.');
+        }
+
+        $this->container['authorization'] = $authorization;
 
         return $this;
     }

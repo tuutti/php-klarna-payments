@@ -174,7 +174,6 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
 
     const TYPE_INVOICE = 'invoice';
     const TYPE_FIXED_AMOUNT = 'fixed_amount';
-    const TYPE_PIX = 'pix';
     const TYPE_BASE_ACCOUNT = 'base_account';
     const TYPE_DEFERRED_INTEREST = 'deferred_interest';
     const TYPE_DIRECT_DEBIT = 'direct_debit';
@@ -195,7 +194,6 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
         return [
             self::TYPE_INVOICE,
             self::TYPE_FIXED_AMOUNT,
-            self::TYPE_PIX,
             self::TYPE_BASE_ACCOUNT,
             self::TYPE_DEFERRED_INTEREST,
             self::TYPE_DIRECT_DEBIT,
