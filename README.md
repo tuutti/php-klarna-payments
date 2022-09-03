@@ -7,7 +7,8 @@ API spec
 
 ### Requirements
 
-PHP 7.2 and later.
+PHP 7.4 and later.
+Should also work with PHP 8.0.
 
 ### Composer
 
@@ -102,6 +103,7 @@ Class | Method | HTTP request | Description
 - [PaymentMethodCategory](docs/Model/PaymentMethodCategory.md)
 - [ProductIdentifiers](docs/Model/ProductIdentifiers.md)
 - [Session](docs/Model/Session.md)
+- [Subscription](docs/Model/Subscription.md)
 
 ## Authorization
 

@@ -16,5 +16,5 @@ jobs:
         with:
           committer: GitHub <noreply@github.com>
           author: actions-bot <actions-bot@users.noreply.github.com>
-          title: "[automation] Client updates"
-          branch: update-definitions
+          title: "[automation] Client updates (v2)"
+          branch: update-definitions-v2

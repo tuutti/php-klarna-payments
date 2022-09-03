@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **total_tax_amount** | **int** | Total tax amount of the order line. Must be within ±1 of total_amount - total_amount 10000 / (10000 + tax_rate). Negative when type is discount. | [optional]
 **type** | **string** | Type of the order line item. The possible values are:  physical discount shipping_fee sales_tax digital gift_card store_credit surcharge | [optional]
 **unit_price** | **int** | Price for a single unit of the order line. Non-negative minor units. Includes tax, excludes discount. (max value: 100000000) |
+**subscription** | [**\Klarna\Payments\Model\Subscription**](Subscription.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

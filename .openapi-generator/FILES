@@ -1,4 +1,4 @@
-.php_cs
+.php-cs-fixer.dist.php
 .travis.yml
 README.md
 composer.json
@@ -21,6 +21,7 @@ docs/Model/OrderLine.md
 docs/Model/PaymentMethodCategory.md
 docs/Model/ProductIdentifiers.md
 docs/Model/Session.md
+docs/Model/Subscription.md
 git_push.sh
 phpunit.xml.dist
 src/Api/OrdersApi.php
@@ -46,4 +47,5 @@ src/Model/OrderLine.php
 src/Model/PaymentMethodCategory.php
 src/Model/ProductIdentifiers.php
 src/Model/Session.php
+src/Model/Subscription.php
 src/ObjectSerializer.php

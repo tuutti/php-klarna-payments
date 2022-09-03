@@ -1,6 +1,6 @@
 <?php
 /**
- * ErrorV2
+ * Subscription
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Klarna\ObjectSerializer;
 
 /**
- * ErrorV2 Class Doc Comment
+ * Subscription Class Doc Comment
  *
  * @category Class
  * @package  Klarna\Payments
@@ -40,7 +40,7 @@ use \Klarna\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
+class Subscription implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ErrorV2';
+    protected static $openAPIModelName = 'subscription';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,12 +57,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'authorized_payment_method' => '\Klarna\Payments\Model\AuthorizedPaymentMethod',
-        'correlation_id' => 'string',
-        'error_code' => 'string',
-        'error_messages' => 'string[]',
-        'fraud_status' => 'string',
-        'reason' => 'string'
+        'name' => 'string',
+        'interval' => 'string',
+        'interval_count' => 'int'
     ];
 
     /**
@@ -73,12 +70,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'authorized_payment_method' => null,
-        'correlation_id' => null,
-        'error_code' => null,
-        'error_messages' => null,
-        'fraud_status' => null,
-        'reason' => null
+        'name' => null,
+        'interval' => null,
+        'interval_count' => null
     ];
 
     /**
@@ -108,12 +102,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'authorized_payment_method' => 'authorized_payment_method',
-        'correlation_id' => 'correlation_id',
-        'error_code' => 'error_code',
-        'error_messages' => 'error_messages',
-        'fraud_status' => 'fraud_status',
-        'reason' => 'reason'
+        'name' => 'name',
+        'interval' => 'interval',
+        'interval_count' => 'interval_count'
     ];
 
     /**
@@ -122,12 +113,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'authorized_payment_method' => 'setAuthorizedPaymentMethod',
-        'correlation_id' => 'setCorrelationId',
-        'error_code' => 'setErrorCode',
-        'error_messages' => 'setErrorMessages',
-        'fraud_status' => 'setFraudStatus',
-        'reason' => 'setReason'
+        'name' => 'setName',
+        'interval' => 'setInterval',
+        'interval_count' => 'setIntervalCount'
     ];
 
     /**
@@ -136,12 +124,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'authorized_payment_method' => 'getAuthorizedPaymentMethod',
-        'correlation_id' => 'getCorrelationId',
-        'error_code' => 'getErrorCode',
-        'error_messages' => 'getErrorMessages',
-        'fraud_status' => 'getFraudStatus',
-        'reason' => 'getReason'
+        'name' => 'getName',
+        'interval' => 'getInterval',
+        'interval_count' => 'getIntervalCount'
     ];
 
     /**
@@ -185,6 +170,25 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    public const INTERVAL_DAY = 'DAY';
+    public const INTERVAL_WEEK = 'WEEK';
+    public const INTERVAL_MONTH = 'MONTH';
+    public const INTERVAL_YEAR = 'YEAR';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getIntervalAllowableValues()
+    {
+        return [
+            self::INTERVAL_DAY,
+            self::INTERVAL_WEEK,
+            self::INTERVAL_MONTH,
+            self::INTERVAL_YEAR,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -201,12 +205,9 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['authorized_payment_method'] = $data['authorized_payment_method'] ?? null;
-        $this->container['correlation_id'] = $data['correlation_id'] ?? null;
-        $this->container['error_code'] = $data['error_code'] ?? null;
-        $this->container['error_messages'] = $data['error_messages'] ?? null;
-        $this->container['fraud_status'] = $data['fraud_status'] ?? null;
-        $this->container['reason'] = $data['reason'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['interval'] = $data['interval'] ?? null;
+        $this->container['interval_count'] = $data['interval_count'] ?? null;
     }
 
     /**
@@ -217,6 +218,36 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ((mb_strlen($this->container['name']) > 255)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 255.";
+        }
+
+        if ((mb_strlen($this->container['name']) < 1)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['interval'] === null) {
+            $invalidProperties[] = "'interval' can't be null";
+        }
+        $allowedValues = $this->getIntervalAllowableValues();
+        if (!is_null($this->container['interval']) && !in_array($this->container['interval'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'interval', must be one of '%s'",
+                $this->container['interval'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        if ($this->container['interval_count'] === null) {
+            $invalidProperties[] = "'interval_count' can't be null";
+        }
+        if (($this->container['interval_count'] < 1)) {
+            $invalidProperties[] = "invalid value for 'interval_count', must be bigger than or equal to 1.";
+        }
 
         return $invalidProperties;
     }
@@ -234,145 +265,95 @@ class ErrorV2 implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets authorized_payment_method
+     * Gets name
      *
-     * @return \Klarna\Payments\Model\AuthorizedPaymentMethod|null
+     * @return string
      */
-    public function getAuthorizedPaymentMethod()
+    public function getName()
     {
-        return $this->container['authorized_payment_method'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets authorized_payment_method
+     * Sets name
      *
-     * @param \Klarna\Payments\Model\AuthorizedPaymentMethod|null $authorized_payment_method authorized_payment_method
+     * @param string $name The name of the subscription product
      *
      * @return self
      */
-    public function setAuthorizedPaymentMethod($authorized_payment_method)
+    public function setName($name)
     {
-        $this->container['authorized_payment_method'] = $authorized_payment_method;
+        if ((mb_strlen($name) > 255)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling Subscription., must be smaller than or equal to 255.');
+        }
+        if ((mb_strlen($name) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling Subscription., must be bigger than or equal to 1.');
+        }
+
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets correlation_id
+     * Gets interval
      *
-     * @return string|null
+     * @return string
      */
-    public function getCorrelationId()
+    public function getInterval()
     {
-        return $this->container['correlation_id'];
+        return $this->container['interval'];
     }
 
     /**
-     * Sets correlation_id
+     * Sets interval
      *
-     * @param string|null $correlation_id correlation_id
+     * @param string $interval The cadence unit for this.
      *
      * @return self
      */
-    public function setCorrelationId($correlation_id)
+    public function setInterval($interval)
     {
-        $this->container['correlation_id'] = $correlation_id;
+        $allowedValues = $this->getIntervalAllowableValues();
+        if (!in_array($interval, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'interval', must be one of '%s'",
+                    $interval,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['interval'] = $interval;
 
         return $this;
     }
 
     /**
-     * Gets error_code
+     * Gets interval_count
      *
-     * @return string|null
+     * @return int
      */
-    public function getErrorCode()
+    public function getIntervalCount()
     {
-        return $this->container['error_code'];
+        return $this->container['interval_count'];
     }
 
     /**
-     * Sets error_code
+     * Sets interval_count
      *
-     * @param string|null $error_code error_code
+     * @param int $interval_count The number of intervals
      *
      * @return self
      */
-    public function setErrorCode($error_code)
+    public function setIntervalCount($interval_count)
     {
-        $this->container['error_code'] = $error_code;
 
-        return $this;
-    }
+        if (($interval_count < 1)) {
+            throw new \InvalidArgumentException('invalid value for $interval_count when calling Subscription., must be bigger than or equal to 1.');
+        }
 
-    /**
-     * Gets error_messages
-     *
-     * @return string[]|null
-     */
-    public function getErrorMessages()
-    {
-        return $this->container['error_messages'];
-    }
-
-    /**
-     * Sets error_messages
-     *
-     * @param string[]|null $error_messages error_messages
-     *
-     * @return self
-     */
-    public function setErrorMessages($error_messages)
-    {
-        $this->container['error_messages'] = $error_messages;
-
-        return $this;
-    }
-
-    /**
-     * Gets fraud_status
-     *
-     * @return string|null
-     */
-    public function getFraudStatus()
-    {
-        return $this->container['fraud_status'];
-    }
-
-    /**
-     * Sets fraud_status
-     *
-     * @param string|null $fraud_status fraud_status
-     *
-     * @return self
-     */
-    public function setFraudStatus($fraud_status)
-    {
-        $this->container['fraud_status'] = $fraud_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets reason
-     *
-     * @return string|null
-     */
-    public function getReason()
-    {
-        return $this->container['reason'];
-    }
-
-    /**
-     * Sets reason
-     *
-     * @param string|null $reason reason
-     *
-     * @return self
-     */
-    public function setReason($reason)
-    {
-        $this->container['reason'] = $reason;
+        $this->container['interval_count'] = $interval_count;
 
         return $this;
     }
