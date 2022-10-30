@@ -510,7 +510,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets family_name
      *
-     * @param string|null $family_name Customer’s family name.
+     * @param string|null $family_name Customers family name in UTF-8 encoding. Cannot be only numbers, must be more than 1 character. Allowed special characters: -'’. More information can be found [in this link](https://docs.klarna.com/klarna-payments/in-depth-knowledge/customer-data-requirements/#details-needed-per-market)
      *
      * @return self
      */
@@ -541,7 +541,7 @@ class Address implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets given_name
      *
-     * @param string|null $given_name Customer’s first name.
+     * @param string|null $given_name Customers given name in UTF-8 encoding. Cannot be only numbers, must be more than 1 character. Allowed special characters: -'’. More information can be found [in this link](https://docs.klarna.com/klarna-payments/in-depth-knowledge/customer-data-requirements/#details-needed-per-market)
      *
      * @return self
      */

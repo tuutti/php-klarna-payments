@@ -305,10 +305,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['locale'] === null) {
-            $invalidProperties[] = "'locale' can't be null";
-        }
-        if (!preg_match("/^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/", $this->container['locale'])) {
+        if (!is_null($this->container['locale']) && !preg_match("/^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/", $this->container['locale'])) {
             $invalidProperties[] = "invalid value for 'locale', must be conform to the pattern /^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/.";
         }
 
@@ -519,7 +516,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets locale
      *
-     * @return string
+     * @return string|null
      */
     public function getLocale()
     {
@@ -529,14 +526,14 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets locale
      *
-     * @param string $locale Used to define the language and region of the customer. The locale follows the format of RFC 1766, meaning language-country The following values are applicable:  AT: \"de-AT\", \"de-DE\", \"en-DE\" BE: \"be-BE\", \"nl-BE\", \"fr-BE\", \"en-BE\" CH: \"it-CH\", \"de-CH\", \"fr-CH\", \"en-CH\" DE: \"de-DE\", \"de-AT\", \"en-DE\" DK: \"da-DK\", \"en-DK\" ES: \"es-ES\", \"ca-ES\", \"en-ES\" FI: \"fi-FI\", \"sv-FI\", \"en-FI\" GB: \"en-GB\" IT: \"it-IT\", \"en-IT\" NL: \"nl-NL\", \"en-NL\" NO: \"nb-NO\", \"en-NO\" PL: \"pl-PL\", \"en-PL\" SE: \"sv-SE\", \"en-SE\" US: \"en-US\"
+     * @param string|null $locale Used to define the language and region of the customer. The locale follows the format of (RFC 1766)[https://datatracker.ietf.org/doc/rfc1766/], meaning its value consists of language-country. The following values are applicable:  AT: \"de-AT\", \"de-DE\", \"en-DE\" BE: \"be-BE\", \"nl-BE\", \"fr-BE\", \"en-BE\" CH: \"it-CH\", \"de-CH\", \"fr-CH\", \"en-CH\" DE: \"de-DE\", \"de-AT\", \"en-DE\" DK: \"da-DK\", \"en-DK\" ES: \"es-ES\", \"ca-ES\", \"en-ES\" FI: \"fi-FI\", \"sv-FI\", \"en-FI\" GB: \"en-GB\" IT: \"it-IT\", \"en-IT\" NL: \"nl-NL\", \"en-NL\" NO: \"nb-NO\", \"en-NO\" PL: \"pl-PL\", \"en-PL\" SE: \"sv-SE\", \"en-SE\" US: \"en-US\".
      *
      * @return self
      */
     public function setLocale($locale)
     {
 
-        if ((!preg_match("/^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/", $locale))) {
+        if (!is_null($locale) && (!preg_match("/^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/", $locale))) {
             throw new \InvalidArgumentException("invalid value for $locale when calling CreateOrderRequest., must conform to the pattern /^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/.");
         }
 
@@ -589,7 +586,7 @@ class CreateOrderRequest implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets merchant_reference1
      *
-     * @param string|null $merchant_reference1 Used for storing merchant's internal order number or other reference. If set, will be shown on the confirmation page as \"order number\" and send to the customer in the confirmation mail after a successful direct bank transfer payment. It will also be included in the payments description in the customer's bank account and settlement files to the merchant (max 255 characters).
+     * @param string|null $merchant_reference1 Used for storing merchant's internal order number or other reference.
      *
      * @return self
      */

@@ -120,7 +120,7 @@ class SessionsApi
      *
      * Create a new credit session
      *
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -137,7 +137,7 @@ class SessionsApi
      *
      * Create a new credit session
      *
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -236,7 +236,7 @@ class SessionsApi
      *
      * Create a new credit session
      *
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -256,7 +256,7 @@ class SessionsApi
      *
      * Create a new credit session
      *
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -305,7 +305,7 @@ class SessionsApi
     /**
      * Create request for operation 'createCreditSession'
      *
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

@@ -1,6 +1,6 @@
 <?php
 /**
- * Session
+ * SessionCreate
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Klarna\ObjectSerializer;
 
 /**
- * Session Class Doc Comment
+ * SessionCreate Class Doc Comment
  *
  * @category Class
  * @package  Klarna\Payments
@@ -40,7 +40,7 @@ use \Klarna\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class Session implements ModelInterface, ArrayAccess, \JsonSerializable
+class SessionCreate implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'session';
+    protected static $openAPIModelName = 'session_create';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -420,15 +420,21 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'merchant_reference2', the character length must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['order_amount']) && ($this->container['order_amount'] < 0)) {
+        if ($this->container['order_amount'] === null) {
+            $invalidProperties[] = "'order_amount' can't be null";
+        }
+        if (($this->container['order_amount'] < 0)) {
             $invalidProperties[] = "invalid value for 'order_amount', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['order_lines']) && (count($this->container['order_lines']) > 1000)) {
+        if ($this->container['order_lines'] === null) {
+            $invalidProperties[] = "'order_lines' can't be null";
+        }
+        if ((count($this->container['order_lines']) > 1000)) {
             $invalidProperties[] = "invalid value for 'order_lines', number of items must be less than or equal to 1000.";
         }
 
-        if (!is_null($this->container['order_lines']) && (count($this->container['order_lines']) < 1)) {
+        if ((count($this->container['order_lines']) < 1)) {
             $invalidProperties[] = "invalid value for 'order_lines', number of items must be greater than or equal to 1.";
         }
 
@@ -436,11 +442,17 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = "invalid value for 'order_tax_amount', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['purchase_country']) && !preg_match("/^[A-Za-z]{2,2}$/", $this->container['purchase_country'])) {
+        if ($this->container['purchase_country'] === null) {
+            $invalidProperties[] = "'purchase_country' can't be null";
+        }
+        if (!preg_match("/^[A-Za-z]{2,2}$/", $this->container['purchase_country'])) {
             $invalidProperties[] = "invalid value for 'purchase_country', must be conform to the pattern /^[A-Za-z]{2,2}$/.";
         }
 
-        if (!is_null($this->container['purchase_currency']) && !preg_match("/^[A-Za-z]{3,3}$/", $this->container['purchase_currency'])) {
+        if ($this->container['purchase_currency'] === null) {
+            $invalidProperties[] = "'purchase_currency' can't be null";
+        }
+        if (!preg_match("/^[A-Za-z]{3,3}$/", $this->container['purchase_currency'])) {
             $invalidProperties[] = "invalid value for 'purchase_currency', must be conform to the pattern /^[A-Za-z]{3,3}$/.";
         }
 
@@ -603,10 +615,10 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setClientToken($client_token)
     {
         if (!is_null($client_token) && (mb_strlen($client_token) > 4096)) {
-            throw new \InvalidArgumentException('invalid length for $client_token when calling Session., must be smaller than or equal to 4096.');
+            throw new \InvalidArgumentException('invalid length for $client_token when calling SessionCreate., must be smaller than or equal to 4096.');
         }
         if (!is_null($client_token) && (mb_strlen($client_token) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $client_token when calling Session., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $client_token when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['client_token'] = $client_token;
@@ -723,7 +735,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets locale
      *
-     * @param string|null $locale Used to define the language and region of the customer. The locale follows the format of (RFC 1766)[https://datatracker.ietf.org/doc/rfc1766/], meaning its value consists of language-country. The following values are applicable:  AT: \"de-AT\", \"de-DE\", \"en-DE\" BE: \"be-BE\", \"nl-BE\", \"fr-BE\", \"en-BE\" CH: \"it-CH\", \"de-CH\", \"fr-CH\", \"en-CH\" DE: \"de-DE\", \"de-AT\", \"en-DE\" DK: \"da-DK\", \"en-DK\" ES: \"es-ES\", \"ca-ES\", \"en-ES\" FI: \"fi-FI\", \"sv-FI\", \"en-FI\" GB: \"en-GB\" IT: \"it-IT\", \"en-IT\" NL: \"nl-NL\", \"en-NL\" NO: \"nb-NO\", \"en-NO\" PL: \"pl-PL\", \"en-PL\" SE: \"sv-SE\", \"en-SE\" US: \"en-US\".
+     * @param string|null $locale Used to define the language and region of the customer. The locale follows the format of (RFC 1766)[https://datatracker.ietf.org/doc/rfc1766/], meaning its value consists of language-country. The following values are applicable:  AT: \"de-AT\", \"de-DE\", \"en-DE\" BE: \"be-BE\", \"nl-BE\", \"fr-BE\", \"en-BE\" CH: \"it-CH\", \"de-CH\", \"fr-CH\", \"en-CH\" DE: \"de-DE\", \"de-AT\", \"en-DE\" DK: \"da-DK\", \"en-DK\" ES: \"es-ES\", \"ca-ES\", \"en-ES\" FI: \"fi-FI\", \"sv-FI\", \"en-FI\" GB: \"en-GB\" IT: \"it-IT\", \"en-IT\" NL: \"nl-NL\", \"en-NL\" NO: \"nb-NO\", \"en-NO\" PL: \"pl-PL\", \"en-PL\" SE: \"sv-SE\", \"en-SE\" US: \"en-US\". Default value is \"en-US\".
      *
      * @return self
      */
@@ -731,7 +743,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     {
 
         if (!is_null($locale) && (!preg_match("/^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/", $locale))) {
-            throw new \InvalidArgumentException("invalid value for $locale when calling Session., must conform to the pattern /^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/.");
+            throw new \InvalidArgumentException("invalid value for $locale when calling SessionCreate., must conform to the pattern /^[A-Za-z]{2,2}(?:-[A-Za-z]{2,2})*$/.");
         }
 
         $this->container['locale'] = $locale;
@@ -759,10 +771,10 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMerchantData($merchant_data)
     {
         if (!is_null($merchant_data) && (mb_strlen($merchant_data) > 6000)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_data when calling Session., must be smaller than or equal to 6000.');
+            throw new \InvalidArgumentException('invalid length for $merchant_data when calling SessionCreate., must be smaller than or equal to 6000.');
         }
         if (!is_null($merchant_data) && (mb_strlen($merchant_data) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_data when calling Session., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $merchant_data when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['merchant_data'] = $merchant_data;
@@ -790,10 +802,10 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMerchantReference1($merchant_reference1)
     {
         if (!is_null($merchant_reference1) && (mb_strlen($merchant_reference1) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_reference1 when calling Session., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $merchant_reference1 when calling SessionCreate., must be smaller than or equal to 255.');
         }
         if (!is_null($merchant_reference1) && (mb_strlen($merchant_reference1) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_reference1 when calling Session., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $merchant_reference1 when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['merchant_reference1'] = $merchant_reference1;
@@ -821,10 +833,10 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMerchantReference2($merchant_reference2)
     {
         if (!is_null($merchant_reference2) && (mb_strlen($merchant_reference2) > 255)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_reference2 when calling Session., must be smaller than or equal to 255.');
+            throw new \InvalidArgumentException('invalid length for $merchant_reference2 when calling SessionCreate., must be smaller than or equal to 255.');
         }
         if (!is_null($merchant_reference2) && (mb_strlen($merchant_reference2) < 0)) {
-            throw new \InvalidArgumentException('invalid length for $merchant_reference2 when calling Session., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid length for $merchant_reference2 when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['merchant_reference2'] = $merchant_reference2;
@@ -883,7 +895,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_amount
      *
-     * @return int|null
+     * @return int
      */
     public function getOrderAmount()
     {
@@ -893,15 +905,15 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_amount
      *
-     * @param int|null $order_amount Total amount of the order including tax and any available discounts. The value should be in non-negative minor units. Eg: 25 Euros should be 2500.
+     * @param int $order_amount Total amount of the order including tax and any available discounts. The value should be in non-negative minor units. Eg: 25 Euros should be 2500.
      *
      * @return self
      */
     public function setOrderAmount($order_amount)
     {
 
-        if (!is_null($order_amount) && ($order_amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $order_amount when calling Session., must be bigger than or equal to 0.');
+        if (($order_amount < 0)) {
+            throw new \InvalidArgumentException('invalid value for $order_amount when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['order_amount'] = $order_amount;
@@ -912,7 +924,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets order_lines
      *
-     * @return \Klarna\Payments\Model\OrderLine[]|null
+     * @return \Klarna\Payments\Model\OrderLine[]
      */
     public function getOrderLines()
     {
@@ -922,18 +934,18 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets order_lines
      *
-     * @param \Klarna\Payments\Model\OrderLine[]|null $order_lines The array containing list of line items that are part of this order. Maximum of 1000 line items could be processed in a single order.
+     * @param \Klarna\Payments\Model\OrderLine[] $order_lines The array containing list of line items that are part of this order. Maximum of 1000 line items could be processed in a single order.
      *
      * @return self
      */
     public function setOrderLines($order_lines)
     {
 
-        if (!is_null($order_lines) && (count($order_lines) > 1000)) {
-            throw new \InvalidArgumentException('invalid value for $order_lines when calling Session., number of items must be less than or equal to 1000.');
+        if ((count($order_lines) > 1000)) {
+            throw new \InvalidArgumentException('invalid value for $order_lines when calling SessionCreate., number of items must be less than or equal to 1000.');
         }
-        if (!is_null($order_lines) && (count($order_lines) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $order_lines when calling Session., number of items must be greater than or equal to 1.');
+        if ((count($order_lines) < 1)) {
+            throw new \InvalidArgumentException('invalid length for $order_lines when calling SessionCreate., number of items must be greater than or equal to 1.');
         }
         $this->container['order_lines'] = $order_lines;
 
@@ -961,7 +973,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     {
 
         if (!is_null($order_tax_amount) && ($order_tax_amount < 0)) {
-            throw new \InvalidArgumentException('invalid value for $order_tax_amount when calling Session., must be bigger than or equal to 0.');
+            throw new \InvalidArgumentException('invalid value for $order_tax_amount when calling SessionCreate., must be bigger than or equal to 0.');
         }
 
         $this->container['order_tax_amount'] = $order_tax_amount;
@@ -998,7 +1010,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_country
      *
-     * @return string|null
+     * @return string
      */
     public function getPurchaseCountry()
     {
@@ -1008,15 +1020,15 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_country
      *
-     * @param string|null $purchase_country The purchase country of the customer. The billing country always overrides purchase country if the values are different. Formatted according to ISO 3166 alpha-2 standard, e.g. GB, SE, DE, US, etc.
+     * @param string $purchase_country The purchase country of the customer. The billing country always overrides purchase country if the values are different. Formatted according to ISO 3166 alpha-2 standard, e.g. GB, SE, DE, US, etc.
      *
      * @return self
      */
     public function setPurchaseCountry($purchase_country)
     {
 
-        if (!is_null($purchase_country) && (!preg_match("/^[A-Za-z]{2,2}$/", $purchase_country))) {
-            throw new \InvalidArgumentException("invalid value for $purchase_country when calling Session., must conform to the pattern /^[A-Za-z]{2,2}$/.");
+        if ((!preg_match("/^[A-Za-z]{2,2}$/", $purchase_country))) {
+            throw new \InvalidArgumentException("invalid value for $purchase_country when calling SessionCreate., must conform to the pattern /^[A-Za-z]{2,2}$/.");
         }
 
         $this->container['purchase_country'] = $purchase_country;
@@ -1027,7 +1039,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets purchase_currency
      *
-     * @return string|null
+     * @return string
      */
     public function getPurchaseCurrency()
     {
@@ -1037,15 +1049,15 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets purchase_currency
      *
-     * @param string|null $purchase_currency The purchase currency of the order. Formatted according to ISO 4217 standard, e.g. USD, EUR, SEK, GBP, etc.
+     * @param string $purchase_currency The purchase currency of the order. Formatted according to ISO 4217 standard, e.g. USD, EUR, SEK, GBP, etc.
      *
      * @return self
      */
     public function setPurchaseCurrency($purchase_currency)
     {
 
-        if (!is_null($purchase_currency) && (!preg_match("/^[A-Za-z]{3,3}$/", $purchase_currency))) {
-            throw new \InvalidArgumentException("invalid value for $purchase_currency when calling Session., must conform to the pattern /^[A-Za-z]{3,3}$/.");
+        if ((!preg_match("/^[A-Za-z]{3,3}$/", $purchase_currency))) {
+            throw new \InvalidArgumentException("invalid value for $purchase_currency when calling SessionCreate., must conform to the pattern /^[A-Za-z]{3,3}$/.");
         }
 
         $this->container['purchase_currency'] = $purchase_currency;
