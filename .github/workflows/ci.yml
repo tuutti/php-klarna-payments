@@ -15,13 +15,13 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php-version: ['7.4', '8.0', '8.1']
+        php-version: ['8.0', '8.1']
     container:
       image: ghcr.io/tuutti/drupal-php-docker:${{ matrix.php-version }}
 
     services:
       mariadb:
-        image: mariadb:10.5
+        image: mariadb:10.9
         env:
           MYSQL_USER: drupal
           MYSQL_PASSWORD: drupal
@@ -52,7 +52,7 @@ jobs:
           composer config repositories.6 path modules/custom/commerce_klarna_payments
           composer require drupal/commerce_klarna_payments -W
           composer require tuutti/$KLARNA_LIBRARY_NAME -W
-          composer require "drush/drush ^10.0"
+          composer require "drush/drush ^11.0"
           composer run-script drupal-phpunit-upgrade
           php -d sendmail_path=$(which true); vendor/bin/drush --yes -v site-install minimal --db-url="$SIMPLETEST_DB"
 
