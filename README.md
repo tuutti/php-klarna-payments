@@ -103,6 +103,7 @@ Class | Method | HTTP request | Description
 - [PaymentMethodCategory](docs/Model/PaymentMethodCategory.md)
 - [ProductIdentifiers](docs/Model/ProductIdentifiers.md)
 - [Session](docs/Model/Session.md)
+- [SessionCreate](docs/Model/SessionCreate.md)
 - [Subscription](docs/Model/Subscription.md)
 
 ## Authorization

@@ -212,9 +212,6 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['redirect_url'] === null) {
-            $invalidProperties[] = "'redirect_url' can't be null";
-        }
         if ($this->container['token_id'] === null) {
             $invalidProperties[] = "'token_id' can't be null";
         }
@@ -308,7 +305,7 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets redirect_url
      *
-     * @return string
+     * @return string|null
      */
     public function getRedirectUrl()
     {
@@ -318,7 +315,7 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets redirect_url
      *
-     * @param string $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL where Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience.
+     * @param string|null $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL where Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience.
      *
      * @return self
      */

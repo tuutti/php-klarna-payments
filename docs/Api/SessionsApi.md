@@ -38,7 +38,7 @@ $apiInstance = new Klarna\Payments\Api\SessionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Klarna\Payments\Model\Session(); // \Klarna\Payments\Model\Session | session_request
+$body = new \Klarna\Payments\Model\SessionCreate(); // \Klarna\Payments\Model\SessionCreate | session_request
 
 try {
     $result = $apiInstance->createCreditSession($body);
@@ -52,7 +52,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Klarna\Payments\Model\Session**](../Model/Session.md)| session_request |
+ **body** | [**\Klarna\Payments\Model\SessionCreate**](../Model/SessionCreate.md)| session_request |
 
 ### Return type
 

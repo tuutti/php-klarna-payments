@@ -21,6 +21,7 @@ docs/Model/OrderLine.md
 docs/Model/PaymentMethodCategory.md
 docs/Model/ProductIdentifiers.md
 docs/Model/Session.md
+docs/Model/SessionCreate.md
 docs/Model/Subscription.md
 git_push.sh
 phpunit.xml.dist
@@ -47,5 +48,6 @@ src/Model/OrderLine.php
 src/Model/PaymentMethodCategory.php
 src/Model/ProductIdentifiers.php
 src/Model/Session.php
+src/Model/SessionCreate.php
 src/Model/Subscription.php
 src/ObjectSerializer.php
