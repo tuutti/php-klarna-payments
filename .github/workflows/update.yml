@@ -18,3 +18,4 @@ jobs:
           author: actions-bot <actions-bot@users.noreply.github.com>
           title: "[automation] Client updates (v2)"
           branch: update-definitions-v2
+          token: ${{ secrets.PAT }}
