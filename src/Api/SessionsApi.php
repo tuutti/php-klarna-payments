@@ -118,7 +118,7 @@ class SessionsApi
     /**
      * Operation createCreditSession
      *
-     * Create a new credit session
+     * Create a new payment session
      *
      * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
@@ -135,7 +135,7 @@ class SessionsApi
     /**
      * Operation createCreditSessionWithHttpInfo
      *
-     * Create a new credit session
+     * Create a new payment session
      *
      * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
@@ -234,7 +234,7 @@ class SessionsApi
     /**
      * Operation createCreditSessionAsync
      *
-     * Create a new credit session
+     * Create a new payment session
      *
      * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
@@ -254,7 +254,7 @@ class SessionsApi
     /**
      * Operation createCreditSessionAsyncWithHttpInfo
      *
-     * Create a new credit session
+     * Create a new payment session
      *
      * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
      *
@@ -400,7 +400,7 @@ class SessionsApi
     /**
      * Operation readCreditSession
      *
-     * Read an existing credit session
+     * Read an existing payment session
      *
      * @param  string $session_id session_id (required)
      *
@@ -417,7 +417,7 @@ class SessionsApi
     /**
      * Operation readCreditSessionWithHttpInfo
      *
-     * Read an existing credit session
+     * Read an existing payment session
      *
      * @param  string $session_id session_id (required)
      *
@@ -516,7 +516,7 @@ class SessionsApi
     /**
      * Operation readCreditSessionAsync
      *
-     * Read an existing credit session
+     * Read an existing payment session
      *
      * @param  string $session_id session_id (required)
      *
@@ -536,7 +536,7 @@ class SessionsApi
     /**
      * Operation readCreditSessionAsyncWithHttpInfo
      *
-     * Read an existing credit session
+     * Read an existing payment session
      *
      * @param  string $session_id session_id (required)
      *
@@ -684,7 +684,7 @@ class SessionsApi
     /**
      * Operation updateCreditSession
      *
-     * Update an existing credit session
+     * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
      * @param  \Klarna\Payments\Model\Session $body session_request (required)
@@ -701,7 +701,7 @@ class SessionsApi
     /**
      * Operation updateCreditSessionWithHttpInfo
      *
-     * Update an existing credit session
+     * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
      * @param  \Klarna\Payments\Model\Session $body session_request (required)
@@ -761,7 +761,7 @@ class SessionsApi
     /**
      * Operation updateCreditSessionAsync
      *
-     * Update an existing credit session
+     * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
      * @param  \Klarna\Payments\Model\Session $body session_request (required)
@@ -782,7 +782,7 @@ class SessionsApi
     /**
      * Operation updateCreditSessionAsyncWithHttpInfo
      *
-     * Update an existing credit session
+     * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
      * @param  \Klarna\Payments\Model\Session $body session_request (required)
