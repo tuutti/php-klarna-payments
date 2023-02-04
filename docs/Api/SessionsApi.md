@@ -1,12 +1,12 @@
 # Klarna\Payments\SessionsApi
 
-All URIs are relative to https://api.klarna.com.
+All URIs are relative to https://api.klarna.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createCreditSession()**](SessionsApi.md#createCreditSession) | **POST** /payments/v1/sessions | Create a new payment session
-[**readCreditSession()**](SessionsApi.md#readCreditSession) | **GET** /payments/v1/sessions/{session_id} | Read an existing payment session
-[**updateCreditSession()**](SessionsApi.md#updateCreditSession) | **POST** /payments/v1/sessions/{session_id} | Update an existing payment session
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createCreditSession()**](SessionsApi.md#createCreditSession) | **POST** /payments/v1/sessions | Create a new payment session |
+| [**readCreditSession()**](SessionsApi.md#readCreditSession) | **GET** /payments/v1/sessions/{session_id} | Read an existing payment session |
+| [**updateCreditSession()**](SessionsApi.md#updateCreditSession) | **POST** /payments/v1/sessions/{session_id} | Update an existing payment session |
 
 
 ## `createCreditSession()`
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **body** | [**\Klarna\Payments\Model\SessionCreate**](../Model/SessionCreate.md)| session_request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **body** | [**\Klarna\Payments\Model\SessionCreate**](../Model/SessionCreate.md)| session_request | |
 
 ### Return type
 
@@ -112,9 +112,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **session_id** | **string**| session_id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **session_id** | **string**| session_id | |
 
 ### Return type
 
@@ -174,10 +174,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **session_id** | **string**| session_id |
- **body** | [**\Klarna\Payments\Model\Session**](../Model/Session.md)| session_request |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **session_id** | **string**| session_id | |
+| **body** | [**\Klarna\Payments\Model\Session**](../Model/Session.md)| session_request | |
 
 ### Return type
 

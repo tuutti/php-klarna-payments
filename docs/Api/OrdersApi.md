@@ -1,12 +1,12 @@
 # Klarna\Payments\OrdersApi
 
-All URIs are relative to https://api.klarna.com.
+All URIs are relative to https://api.klarna.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an existing authorization
-[**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create a new order
-[**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an existing authorization |
+| [**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create a new order |
+| [**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token |
 
 
 ## `cancelAuthorization()`
@@ -49,9 +49,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization_token** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **authorization_token** | **string**|  | |
 
 ### Return type
 
@@ -112,10 +112,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization_token** | **string**|  |
- **body** | [**\Klarna\Payments\Model\CreateOrderRequest**](../Model/CreateOrderRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **authorization_token** | **string**|  | |
+| **body** | [**\Klarna\Payments\Model\CreateOrderRequest**](../Model/CreateOrderRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -176,10 +176,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization_token** | **string**|  |
- **body** | [**\Klarna\Payments\Model\CustomerTokenCreationRequest**](../Model/CustomerTokenCreationRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **authorization_token** | **string**|  | |
+| **body** | [**\Klarna\Payments\Model\CustomerTokenCreationRequest**](../Model/CustomerTokenCreationRequest.md)|  | [optional] |
 
 ### Return type
 
