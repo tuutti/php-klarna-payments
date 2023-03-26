@@ -12,7 +12,7 @@ All URIs are relative to https://api.klarna.com, except if the operation defines
 ## `createCreditSession()`
 
 ```php
-createCreditSession($body): \Klarna\Payments\Model\MerchantSession
+createCreditSession($session_create): \Klarna\Payments\Model\MerchantSession
 ```
 
 Create a new payment session
@@ -38,10 +38,10 @@ $apiInstance = new Klarna\Payments\Api\SessionsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$body = new \Klarna\Payments\Model\SessionCreate(); // \Klarna\Payments\Model\SessionCreate | session_request
+$session_create = new \Klarna\Payments\Model\SessionCreate(); // \Klarna\Payments\Model\SessionCreate | session_request
 
 try {
-    $result = $apiInstance->createCreditSession($body);
+    $result = $apiInstance->createCreditSession($session_create);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SessionsApi->createCreditSession: ', $e->getMessage(), PHP_EOL;
@@ -52,7 +52,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **body** | [**\Klarna\Payments\Model\SessionCreate**](../Model/SessionCreate.md)| session_request | |
+| **session_create** | [**\Klarna\Payments\Model\SessionCreate**](../Model/SessionCreate.md)| session_request | |
 
 ### Return type
 
@@ -74,7 +74,7 @@ try {
 ## `readCreditSession()`
 
 ```php
-readCreditSession($session_id): \Klarna\Payments\Model\Session
+readCreditSession($session_id): \Klarna\Payments\Model\SessionRead
 ```
 
 Read an existing payment session
@@ -118,7 +118,7 @@ try {
 
 ### Return type
 
-[**\Klarna\Payments\Model\Session**](../Model/Session.md)
+[**\Klarna\Payments\Model\SessionRead**](../Model/SessionRead.md)
 
 ### Authorization
 
@@ -136,7 +136,7 @@ try {
 ## `updateCreditSession()`
 
 ```php
-updateCreditSession($session_id, $body)
+updateCreditSession($session_id, $session)
 ```
 
 Update an existing payment session
@@ -163,10 +163,10 @@ $apiInstance = new Klarna\Payments\Api\SessionsApi(
     $config
 );
 $session_id = 'session_id_example'; // string | session_id
-$body = new \Klarna\Payments\Model\Session(); // \Klarna\Payments\Model\Session | session_request
+$session = new \Klarna\Payments\Model\Session(); // \Klarna\Payments\Model\Session | session_request
 
 try {
-    $apiInstance->updateCreditSession($session_id, $body);
+    $apiInstance->updateCreditSession($session_id, $session);
 } catch (Exception $e) {
     echo 'Exception when calling SessionsApi->updateCreditSession: ', $e->getMessage(), PHP_EOL;
 }
@@ -177,7 +177,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **session_id** | **string**| session_id | |
-| **body** | [**\Klarna\Payments\Model\Session**](../Model/Session.md)| session_request | |
+| **session** | [**\Klarna\Payments\Model\Session**](../Model/Session.md)| session_request | |
 
 ### Return type
 

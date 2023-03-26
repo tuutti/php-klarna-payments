@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerTokenCreationResponse
+ * CustomerReadCreateToken
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Klarna\ObjectSerializer;
 
 /**
- * CustomerTokenCreationResponse Class Doc Comment
+ * CustomerReadCreateToken Class Doc Comment
  *
  * @category Class
  * @package  Klarna\Payments
@@ -40,7 +40,7 @@ use \Klarna\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerReadCreateToken implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_token_creation_response';
+    protected static $openAPIModelName = 'customer_read_create_token';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'billing_address' => '\Klarna\Payments\Model\Address',
-        'customer' => '\Klarna\Payments\Model\CustomerReadCreateToken',
-        'payment_method_reference' => 'string',
-        'redirect_url' => 'string',
-        'token_id' => 'string'
+        'date_of_birth' => 'string',
+        'gender' => 'string'
     ];
 
     /**
@@ -72,11 +69,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'billing_address' => null,
-        'customer' => null,
-        'payment_method_reference' => null,
-        'redirect_url' => null,
-        'token_id' => null
+        'date_of_birth' => null,
+        'gender' => null
     ];
 
     /**
@@ -85,11 +79,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'billing_address' => false,
-		'customer' => false,
-		'payment_method_reference' => false,
-		'redirect_url' => false,
-		'token_id' => false
+        'date_of_birth' => false,
+		'gender' => false
     ];
 
     /**
@@ -178,11 +169,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'billing_address' => 'billing_address',
-        'customer' => 'customer',
-        'payment_method_reference' => 'payment_method_reference',
-        'redirect_url' => 'redirect_url',
-        'token_id' => 'token_id'
+        'date_of_birth' => 'date_of_birth',
+        'gender' => 'gender'
     ];
 
     /**
@@ -191,11 +179,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'billing_address' => 'setBillingAddress',
-        'customer' => 'setCustomer',
-        'payment_method_reference' => 'setPaymentMethodReference',
-        'redirect_url' => 'setRedirectUrl',
-        'token_id' => 'setTokenId'
+        'date_of_birth' => 'setDateOfBirth',
+        'gender' => 'setGender'
     ];
 
     /**
@@ -204,11 +189,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'billing_address' => 'getBillingAddress',
-        'customer' => 'getCustomer',
-        'payment_method_reference' => 'getPaymentMethodReference',
-        'redirect_url' => 'getRedirectUrl',
-        'token_id' => 'getTokenId'
+        'date_of_birth' => 'getDateOfBirth',
+        'gender' => 'getGender'
     ];
 
     /**
@@ -268,11 +250,8 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('billing_address', $data ?? [], null);
-        $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('payment_method_reference', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('token_id', $data ?? [], null);
+        $this->setIfExists('date_of_birth', $data ?? [], null);
+        $this->setIfExists('gender', $data ?? [], null);
     }
 
     /**
@@ -302,9 +281,6 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['token_id'] === null) {
-            $invalidProperties[] = "'token_id' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -321,136 +297,55 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets billing_address
-     *
-     * @return \Klarna\Payments\Model\Address|null
-     */
-    public function getBillingAddress()
-    {
-        return $this->container['billing_address'];
-    }
-
-    /**
-     * Sets billing_address
-     *
-     * @param \Klarna\Payments\Model\Address|null $billing_address billing_address
-     *
-     * @return self
-     */
-    public function setBillingAddress($billing_address)
-    {
-        if (is_null($billing_address)) {
-            throw new \InvalidArgumentException('non-nullable billing_address cannot be null');
-        }
-        $this->container['billing_address'] = $billing_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer
-     *
-     * @return \Klarna\Payments\Model\CustomerReadCreateToken|null
-     */
-    public function getCustomer()
-    {
-        return $this->container['customer'];
-    }
-
-    /**
-     * Sets customer
-     *
-     * @param \Klarna\Payments\Model\CustomerReadCreateToken|null $customer customer
-     *
-     * @return self
-     */
-    public function setCustomer($customer)
-    {
-        if (is_null($customer)) {
-            throw new \InvalidArgumentException('non-nullable customer cannot be null');
-        }
-        $this->container['customer'] = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method_reference
+     * Gets date_of_birth
      *
      * @return string|null
      */
-    public function getPaymentMethodReference()
+    public function getDateOfBirth()
     {
-        return $this->container['payment_method_reference'];
+        return $this->container['date_of_birth'];
     }
 
     /**
-     * Sets payment_method_reference
+     * Sets date_of_birth
      *
-     * @param string|null $payment_method_reference Used to connect customers with payment method when it is present.
+     * @param string|null $date_of_birth Customer’s date of birth. The format is ‘yyyy-mm-dd’
      *
      * @return self
      */
-    public function setPaymentMethodReference($payment_method_reference)
+    public function setDateOfBirth($date_of_birth)
     {
-        if (is_null($payment_method_reference)) {
-            throw new \InvalidArgumentException('non-nullable payment_method_reference cannot be null');
+        if (is_null($date_of_birth)) {
+            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
         }
-        $this->container['payment_method_reference'] = $payment_method_reference;
+        $this->container['date_of_birth'] = $date_of_birth;
 
         return $this;
     }
 
     /**
-     * Gets redirect_url
+     * Gets gender
      *
      * @return string|null
      */
-    public function getRedirectUrl()
+    public function getGender()
     {
-        return $this->container['redirect_url'];
+        return $this->container['gender'];
     }
 
     /**
-     * Sets redirect_url
+     * Sets gender
      *
-     * @param string|null $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL where Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience.
+     * @param string|null $gender Customer’s gender - ‘male’ or ‘female’
      *
      * @return self
      */
-    public function setRedirectUrl($redirect_url)
+    public function setGender($gender)
     {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        if (is_null($gender)) {
+            throw new \InvalidArgumentException('non-nullable gender cannot be null');
         }
-        $this->container['redirect_url'] = $redirect_url;
-
-        return $this;
-    }
-
-    /**
-     * Gets token_id
-     *
-     * @return string
-     */
-    public function getTokenId()
-    {
-        return $this->container['token_id'];
-    }
-
-    /**
-     * Sets token_id
-     *
-     * @param string $token_id Generated customer token. This token will be used to create a new order for the subscription using the Create a New order using token API.
-     *
-     * @return self
-     */
-    public function setTokenId($token_id)
-    {
-        if (is_null($token_id)) {
-            throw new \InvalidArgumentException('non-nullable token_id cannot be null');
-        }
-        $this->container['token_id'] = $token_id;
+        $this->container['gender'] = $gender;
 
         return $this;
     }

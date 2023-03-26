@@ -94,6 +94,8 @@ Class | Method | HTTP request | Description
 - [AuthorizedPaymentMethod](docs/Model/AuthorizedPaymentMethod.md)
 - [CreateOrderRequest](docs/Model/CreateOrderRequest.md)
 - [Customer](docs/Model/Customer.md)
+- [CustomerRead](docs/Model/CustomerRead.md)
+- [CustomerReadCreateToken](docs/Model/CustomerReadCreateToken.md)
 - [CustomerTokenCreationRequest](docs/Model/CustomerTokenCreationRequest.md)
 - [CustomerTokenCreationResponse](docs/Model/CustomerTokenCreationResponse.md)
 - [ErrorV2](docs/Model/ErrorV2.md)
@@ -106,6 +108,7 @@ Class | Method | HTTP request | Description
 - [ProductIdentifiers](docs/Model/ProductIdentifiers.md)
 - [Session](docs/Model/Session.md)
 - [SessionCreate](docs/Model/SessionCreate.md)
+- [SessionRead](docs/Model/SessionRead.md)
 - [Subscription](docs/Model/Subscription.md)
 
 ## Authorization

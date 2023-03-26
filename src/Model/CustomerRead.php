@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomerTokenCreationResponse
+ * CustomerRead
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Klarna\ObjectSerializer;
 
 /**
- * CustomerTokenCreationResponse Class Doc Comment
+ * CustomerRead Class Doc Comment
  *
  * @category Class
  * @package  Klarna\Payments
@@ -40,7 +40,7 @@ use \Klarna\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \JsonSerializable
+class CustomerRead implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       *
       * @var string
       */
-    protected static $openAPIModelName = 'customer_token_creation_response';
+    protected static $openAPIModelName = 'customer_read';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,11 +57,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @var string[]
       */
     protected static $openAPITypes = [
-        'billing_address' => '\Klarna\Payments\Model\Address',
-        'customer' => '\Klarna\Payments\Model\CustomerReadCreateToken',
-        'payment_method_reference' => 'string',
-        'redirect_url' => 'string',
-        'token_id' => 'string'
+        'date_of_birth' => 'string',
+        'gender' => 'string',
+        'organization_entity_type' => 'string',
+        'organization_registration_id' => 'string',
+        'title' => 'string',
+        'type' => 'string',
+        'vat_id' => 'string'
     ];
 
     /**
@@ -72,11 +74,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'billing_address' => null,
-        'customer' => null,
-        'payment_method_reference' => null,
-        'redirect_url' => null,
-        'token_id' => null
+        'date_of_birth' => null,
+        'gender' => null,
+        'organization_entity_type' => null,
+        'organization_registration_id' => null,
+        'title' => null,
+        'type' => null,
+        'vat_id' => null
     ];
 
     /**
@@ -85,11 +89,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'billing_address' => false,
-		'customer' => false,
-		'payment_method_reference' => false,
-		'redirect_url' => false,
-		'token_id' => false
+        'date_of_birth' => false,
+		'gender' => false,
+		'organization_entity_type' => false,
+		'organization_registration_id' => false,
+		'title' => false,
+		'type' => false,
+		'vat_id' => false
     ];
 
     /**
@@ -178,11 +184,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $attributeMap = [
-        'billing_address' => 'billing_address',
-        'customer' => 'customer',
-        'payment_method_reference' => 'payment_method_reference',
-        'redirect_url' => 'redirect_url',
-        'token_id' => 'token_id'
+        'date_of_birth' => 'date_of_birth',
+        'gender' => 'gender',
+        'organization_entity_type' => 'organization_entity_type',
+        'organization_registration_id' => 'organization_registration_id',
+        'title' => 'title',
+        'type' => 'type',
+        'vat_id' => 'vat_id'
     ];
 
     /**
@@ -191,11 +199,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $setters = [
-        'billing_address' => 'setBillingAddress',
-        'customer' => 'setCustomer',
-        'payment_method_reference' => 'setPaymentMethodReference',
-        'redirect_url' => 'setRedirectUrl',
-        'token_id' => 'setTokenId'
+        'date_of_birth' => 'setDateOfBirth',
+        'gender' => 'setGender',
+        'organization_entity_type' => 'setOrganizationEntityType',
+        'organization_registration_id' => 'setOrganizationRegistrationId',
+        'title' => 'setTitle',
+        'type' => 'setType',
+        'vat_id' => 'setVatId'
     ];
 
     /**
@@ -204,11 +214,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      * @var string[]
      */
     protected static $getters = [
-        'billing_address' => 'getBillingAddress',
-        'customer' => 'getCustomer',
-        'payment_method_reference' => 'getPaymentMethodReference',
-        'redirect_url' => 'getRedirectUrl',
-        'token_id' => 'getTokenId'
+        'date_of_birth' => 'getDateOfBirth',
+        'gender' => 'getGender',
+        'organization_entity_type' => 'getOrganizationEntityType',
+        'organization_registration_id' => 'getOrganizationRegistrationId',
+        'title' => 'getTitle',
+        'type' => 'getType',
+        'vat_id' => 'getVatId'
     ];
 
     /**
@@ -252,6 +264,39 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
         return self::$openAPIModelName;
     }
 
+    public const ORGANIZATION_ENTITY_TYPE_LIMITED_COMPANY = 'LIMITED_COMPANY';
+    public const ORGANIZATION_ENTITY_TYPE_PUBLIC_LIMITED_COMPANY = 'PUBLIC_LIMITED_COMPANY';
+    public const ORGANIZATION_ENTITY_TYPE_ENTREPRENEURIAL_COMPANY = 'ENTREPRENEURIAL_COMPANY';
+    public const ORGANIZATION_ENTITY_TYPE_LIMITED_PARTNERSHIP_LIMITED_COMPANY = 'LIMITED_PARTNERSHIP_LIMITED_COMPANY';
+    public const ORGANIZATION_ENTITY_TYPE_LIMITED_PARTNERSHIP = 'LIMITED_PARTNERSHIP';
+    public const ORGANIZATION_ENTITY_TYPE_GENERAL_PARTNERSHIP = 'GENERAL_PARTNERSHIP';
+    public const ORGANIZATION_ENTITY_TYPE_REGISTERED_SOLE_TRADER = 'REGISTERED_SOLE_TRADER';
+    public const ORGANIZATION_ENTITY_TYPE_SOLE_TRADER = 'SOLE_TRADER';
+    public const ORGANIZATION_ENTITY_TYPE_CIVIL_LAW_PARTNERSHIP = 'CIVIL_LAW_PARTNERSHIP';
+    public const ORGANIZATION_ENTITY_TYPE_PUBLIC_INSTITUTION = 'PUBLIC_INSTITUTION';
+    public const ORGANIZATION_ENTITY_TYPE_OTHER = 'OTHER';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getOrganizationEntityTypeAllowableValues()
+    {
+        return [
+            self::ORGANIZATION_ENTITY_TYPE_LIMITED_COMPANY,
+            self::ORGANIZATION_ENTITY_TYPE_PUBLIC_LIMITED_COMPANY,
+            self::ORGANIZATION_ENTITY_TYPE_ENTREPRENEURIAL_COMPANY,
+            self::ORGANIZATION_ENTITY_TYPE_LIMITED_PARTNERSHIP_LIMITED_COMPANY,
+            self::ORGANIZATION_ENTITY_TYPE_LIMITED_PARTNERSHIP,
+            self::ORGANIZATION_ENTITY_TYPE_GENERAL_PARTNERSHIP,
+            self::ORGANIZATION_ENTITY_TYPE_REGISTERED_SOLE_TRADER,
+            self::ORGANIZATION_ENTITY_TYPE_SOLE_TRADER,
+            self::ORGANIZATION_ENTITY_TYPE_CIVIL_LAW_PARTNERSHIP,
+            self::ORGANIZATION_ENTITY_TYPE_PUBLIC_INSTITUTION,
+            self::ORGANIZATION_ENTITY_TYPE_OTHER,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -268,11 +313,13 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('billing_address', $data ?? [], null);
-        $this->setIfExists('customer', $data ?? [], null);
-        $this->setIfExists('payment_method_reference', $data ?? [], null);
-        $this->setIfExists('redirect_url', $data ?? [], null);
-        $this->setIfExists('token_id', $data ?? [], null);
+        $this->setIfExists('date_of_birth', $data ?? [], null);
+        $this->setIfExists('gender', $data ?? [], null);
+        $this->setIfExists('organization_entity_type', $data ?? [], null);
+        $this->setIfExists('organization_registration_id', $data ?? [], null);
+        $this->setIfExists('title', $data ?? [], null);
+        $this->setIfExists('type', $data ?? [], null);
+        $this->setIfExists('vat_id', $data ?? [], null);
     }
 
     /**
@@ -302,9 +349,15 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
     {
         $invalidProperties = [];
 
-        if ($this->container['token_id'] === null) {
-            $invalidProperties[] = "'token_id' can't be null";
+        $allowedValues = $this->getOrganizationEntityTypeAllowableValues();
+        if (!is_null($this->container['organization_entity_type']) && !in_array($this->container['organization_entity_type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'organization_entity_type', must be one of '%s'",
+                $this->container['organization_entity_type'],
+                implode("', '", $allowedValues)
+            );
         }
+
         return $invalidProperties;
     }
 
@@ -321,136 +374,200 @@ class CustomerTokenCreationResponse implements ModelInterface, ArrayAccess, \Jso
 
 
     /**
-     * Gets billing_address
-     *
-     * @return \Klarna\Payments\Model\Address|null
-     */
-    public function getBillingAddress()
-    {
-        return $this->container['billing_address'];
-    }
-
-    /**
-     * Sets billing_address
-     *
-     * @param \Klarna\Payments\Model\Address|null $billing_address billing_address
-     *
-     * @return self
-     */
-    public function setBillingAddress($billing_address)
-    {
-        if (is_null($billing_address)) {
-            throw new \InvalidArgumentException('non-nullable billing_address cannot be null');
-        }
-        $this->container['billing_address'] = $billing_address;
-
-        return $this;
-    }
-
-    /**
-     * Gets customer
-     *
-     * @return \Klarna\Payments\Model\CustomerReadCreateToken|null
-     */
-    public function getCustomer()
-    {
-        return $this->container['customer'];
-    }
-
-    /**
-     * Sets customer
-     *
-     * @param \Klarna\Payments\Model\CustomerReadCreateToken|null $customer customer
-     *
-     * @return self
-     */
-    public function setCustomer($customer)
-    {
-        if (is_null($customer)) {
-            throw new \InvalidArgumentException('non-nullable customer cannot be null');
-        }
-        $this->container['customer'] = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Gets payment_method_reference
+     * Gets date_of_birth
      *
      * @return string|null
      */
-    public function getPaymentMethodReference()
+    public function getDateOfBirth()
     {
-        return $this->container['payment_method_reference'];
+        return $this->container['date_of_birth'];
     }
 
     /**
-     * Sets payment_method_reference
+     * Sets date_of_birth
      *
-     * @param string|null $payment_method_reference Used to connect customers with payment method when it is present.
+     * @param string|null $date_of_birth Customer’s date of birth. The format is ‘yyyy-mm-dd’
      *
      * @return self
      */
-    public function setPaymentMethodReference($payment_method_reference)
+    public function setDateOfBirth($date_of_birth)
     {
-        if (is_null($payment_method_reference)) {
-            throw new \InvalidArgumentException('non-nullable payment_method_reference cannot be null');
+        if (is_null($date_of_birth)) {
+            throw new \InvalidArgumentException('non-nullable date_of_birth cannot be null');
         }
-        $this->container['payment_method_reference'] = $payment_method_reference;
+        $this->container['date_of_birth'] = $date_of_birth;
 
         return $this;
     }
 
     /**
-     * Gets redirect_url
+     * Gets gender
      *
      * @return string|null
      */
-    public function getRedirectUrl()
+    public function getGender()
     {
-        return $this->container['redirect_url'];
+        return $this->container['gender'];
     }
 
     /**
-     * Sets redirect_url
+     * Sets gender
      *
-     * @param string|null $redirect_url URL to redirect the customer to after placing the order. This is a Klarna URL where Klarna will place a cookie in the customer’s browser (if redirected) and redirect the customer back to the confirmation URL provided by the merchant. This is not a mandatory step but a recommended one to improve the returning customer’s experience.
+     * @param string|null $gender Customer’s gender - ‘male’ or ‘female’
      *
      * @return self
      */
-    public function setRedirectUrl($redirect_url)
+    public function setGender($gender)
     {
-        if (is_null($redirect_url)) {
-            throw new \InvalidArgumentException('non-nullable redirect_url cannot be null');
+        if (is_null($gender)) {
+            throw new \InvalidArgumentException('non-nullable gender cannot be null');
         }
-        $this->container['redirect_url'] = $redirect_url;
+        $this->container['gender'] = $gender;
 
         return $this;
     }
 
     /**
-     * Gets token_id
+     * Gets organization_entity_type
      *
-     * @return string
+     * @return string|null
      */
-    public function getTokenId()
+    public function getOrganizationEntityType()
     {
-        return $this->container['token_id'];
+        return $this->container['organization_entity_type'];
     }
 
     /**
-     * Sets token_id
+     * Sets organization_entity_type
      *
-     * @param string $token_id Generated customer token. This token will be used to create a new order for the subscription using the Create a New order using token API.
+     * @param string|null $organization_entity_type Organization entity type. Only applicable for B2B customers.
      *
      * @return self
      */
-    public function setTokenId($token_id)
+    public function setOrganizationEntityType($organization_entity_type)
     {
-        if (is_null($token_id)) {
-            throw new \InvalidArgumentException('non-nullable token_id cannot be null');
+        if (is_null($organization_entity_type)) {
+            throw new \InvalidArgumentException('non-nullable organization_entity_type cannot be null');
         }
-        $this->container['token_id'] = $token_id;
+        $allowedValues = $this->getOrganizationEntityTypeAllowableValues();
+        if (!in_array($organization_entity_type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'organization_entity_type', must be one of '%s'",
+                    $organization_entity_type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['organization_entity_type'] = $organization_entity_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets organization_registration_id
+     *
+     * @return string|null
+     */
+    public function getOrganizationRegistrationId()
+    {
+        return $this->container['organization_registration_id'];
+    }
+
+    /**
+     * Sets organization_registration_id
+     *
+     * @param string|null $organization_registration_id Organization registration id. Only applicable for B2B customers.
+     *
+     * @return self
+     */
+    public function setOrganizationRegistrationId($organization_registration_id)
+    {
+        if (is_null($organization_registration_id)) {
+            throw new \InvalidArgumentException('non-nullable organization_registration_id cannot be null');
+        }
+        $this->container['organization_registration_id'] = $organization_registration_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string|null
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string|null $title Customer’s Title. Allowed values per country: UK - \"Mr\", \"Ms\" DE - \"Herr\", \"Frau\" AT: \"Herr, \"Frau\" CH: de-CH: \"Herr, \"Frau\" it-CH: \"Sig.\", \"Sig.ra\" fr-CH: \"M\", \"Mme\"  BE: \"Dhr.\", \"Mevr.\" NL: \"Dhr.\", \"Mevr.\"
+     *
+     * @return self
+     */
+    public function setTitle($title)
+    {
+        if (is_null($title)) {
+            throw new \InvalidArgumentException('non-nullable title cannot be null');
+        }
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string|null
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string|null $type Type of customer in the session. If nothing is added, a B2C session will be the default. If it is a b2b-session, you should enter organization to trigger a B2B session.
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        if (is_null($type)) {
+            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        }
+        $this->container['type'] = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets vat_id
+     *
+     * @return string|null
+     */
+    public function getVatId()
+    {
+        return $this->container['vat_id'];
+    }
+
+    /**
+     * Sets vat_id
+     *
+     * @param string|null $vat_id VAT ID. Only applicable for B2B customers.
+     *
+     * @return self
+     */
+    public function setVatId($vat_id)
+    {
+        if (is_null($vat_id)) {
+            throw new \InvalidArgumentException('non-nullable vat_id cannot be null');
+        }
+        $this->container['vat_id'] = $vat_id;
 
         return $this;
     }

@@ -10,6 +10,8 @@ docs/Model/Attachment.md
 docs/Model/AuthorizedPaymentMethod.md
 docs/Model/CreateOrderRequest.md
 docs/Model/Customer.md
+docs/Model/CustomerRead.md
+docs/Model/CustomerReadCreateToken.md
 docs/Model/CustomerTokenCreationRequest.md
 docs/Model/CustomerTokenCreationResponse.md
 docs/Model/ErrorV2.md
@@ -22,6 +24,7 @@ docs/Model/PaymentMethodCategory.md
 docs/Model/ProductIdentifiers.md
 docs/Model/Session.md
 docs/Model/SessionCreate.md
+docs/Model/SessionRead.md
 docs/Model/Subscription.md
 git_push.sh
 phpunit.xml.dist
@@ -36,6 +39,8 @@ src/Model/Attachment.php
 src/Model/AuthorizedPaymentMethod.php
 src/Model/CreateOrderRequest.php
 src/Model/Customer.php
+src/Model/CustomerRead.php
+src/Model/CustomerReadCreateToken.php
 src/Model/CustomerTokenCreationRequest.php
 src/Model/CustomerTokenCreationResponse.php
 src/Model/ErrorV2.php
@@ -49,5 +54,6 @@ src/Model/PaymentMethodCategory.php
 src/Model/ProductIdentifiers.php
 src/Model/Session.php
 src/Model/SessionCreate.php
+src/Model/SessionRead.php
 src/Model/Subscription.php
 src/ObjectSerializer.php

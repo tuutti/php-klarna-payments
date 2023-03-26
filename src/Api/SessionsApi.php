@@ -133,16 +133,16 @@ class SessionsApi
      *
      * Create a new payment session
      *
-     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $session_create session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreditSession'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Klarna\Payments\Model\MerchantSession
      */
-    public function createCreditSession($body, string $contentType = self::contentTypes['createCreditSession'][0])
+    public function createCreditSession($session_create, string $contentType = self::contentTypes['createCreditSession'][0])
     {
-        list($response) = $this->createCreditSessionWithHttpInfo($body, $contentType);
+        list($response) = $this->createCreditSessionWithHttpInfo($session_create, $contentType);
         return $response;
     }
 
@@ -151,16 +151,16 @@ class SessionsApi
      *
      * Create a new payment session
      *
-     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $session_create session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreditSession'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Klarna\Payments\Model\MerchantSession, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createCreditSessionWithHttpInfo($body, string $contentType = self::contentTypes['createCreditSession'][0])
+    public function createCreditSessionWithHttpInfo($session_create, string $contentType = self::contentTypes['createCreditSession'][0])
     {
-        $request = $this->createCreditSessionRequest($body, $contentType);
+        $request = $this->createCreditSessionRequest($session_create, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -251,15 +251,15 @@ class SessionsApi
      *
      * Create a new payment session
      *
-     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $session_create session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCreditSessionAsync($body, string $contentType = self::contentTypes['createCreditSession'][0])
+    public function createCreditSessionAsync($session_create, string $contentType = self::contentTypes['createCreditSession'][0])
     {
-        return $this->createCreditSessionAsyncWithHttpInfo($body, $contentType)
+        return $this->createCreditSessionAsyncWithHttpInfo($session_create, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -272,16 +272,16 @@ class SessionsApi
      *
      * Create a new payment session
      *
-     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $session_create session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createCreditSessionAsyncWithHttpInfo($body, string $contentType = self::contentTypes['createCreditSession'][0])
+    public function createCreditSessionAsyncWithHttpInfo($session_create, string $contentType = self::contentTypes['createCreditSession'][0])
     {
         $returnType = '\Klarna\Payments\Model\MerchantSession';
-        $request = $this->createCreditSessionRequest($body, $contentType);
+        $request = $this->createCreditSessionRequest($session_create, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -322,19 +322,19 @@ class SessionsApi
     /**
      * Create request for operation 'createCreditSession'
      *
-     * @param  \Klarna\Payments\Model\SessionCreate $body session_request (required)
+     * @param  \Klarna\Payments\Model\SessionCreate $session_create session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createCreditSessionRequest($body, string $contentType = self::contentTypes['createCreditSession'][0])
+    public function createCreditSessionRequest($session_create, string $contentType = self::contentTypes['createCreditSession'][0])
     {
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'session_create' is set
+        if ($session_create === null || (is_array($session_create) && count($session_create) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling createCreditSession'
+                'Missing the required parameter $session_create when calling createCreditSession'
             );
         }
 
@@ -357,12 +357,12 @@ class SessionsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($session_create)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($session_create));
             } else {
-                $httpBody = $body;
+                $httpBody = $session_create;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -424,7 +424,7 @@ class SessionsApi
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Klarna\Payments\Model\Session
+     * @return \Klarna\Payments\Model\SessionRead
      */
     public function readCreditSession($session_id, string $contentType = self::contentTypes['readCreditSession'][0])
     {
@@ -442,7 +442,7 @@ class SessionsApi
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Klarna\Payments\Model\Session, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Klarna\Payments\Model\SessionRead, HTTP status code, HTTP response headers (array of strings)
      */
     public function readCreditSessionWithHttpInfo($session_id, string $contentType = self::contentTypes['readCreditSession'][0])
     {
@@ -485,23 +485,23 @@ class SessionsApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\Klarna\Payments\Model\Session' === '\SplFileObject') {
+                    if ('\Klarna\Payments\Model\SessionRead' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\Klarna\Payments\Model\Session' !== 'string') {
+                        if ('\Klarna\Payments\Model\SessionRead' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\Klarna\Payments\Model\Session', []),
+                        ObjectSerializer::deserialize($content, '\Klarna\Payments\Model\SessionRead', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\Klarna\Payments\Model\Session';
+            $returnType = '\Klarna\Payments\Model\SessionRead';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -522,7 +522,7 @@ class SessionsApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Klarna\Payments\Model\Session',
+                        '\Klarna\Payments\Model\SessionRead',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -566,7 +566,7 @@ class SessionsApi
      */
     public function readCreditSessionAsyncWithHttpInfo($session_id, string $contentType = self::contentTypes['readCreditSession'][0])
     {
-        $returnType = '\Klarna\Payments\Model\Session';
+        $returnType = '\Klarna\Payments\Model\SessionRead';
         $request = $this->readCreditSessionRequest($session_id, $contentType);
 
         return $this->client
@@ -707,16 +707,16 @@ class SessionsApi
      * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\Session $session session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreditSession'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateCreditSession($session_id, $body, string $contentType = self::contentTypes['updateCreditSession'][0])
+    public function updateCreditSession($session_id, $session, string $contentType = self::contentTypes['updateCreditSession'][0])
     {
-        $this->updateCreditSessionWithHttpInfo($session_id, $body, $contentType);
+        $this->updateCreditSessionWithHttpInfo($session_id, $session, $contentType);
     }
 
     /**
@@ -725,16 +725,16 @@ class SessionsApi
      * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\Session $session session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreditSession'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateCreditSessionWithHttpInfo($session_id, $body, string $contentType = self::contentTypes['updateCreditSession'][0])
+    public function updateCreditSessionWithHttpInfo($session_id, $session, string $contentType = self::contentTypes['updateCreditSession'][0])
     {
-        $request = $this->updateCreditSessionRequest($session_id, $body, $contentType);
+        $request = $this->updateCreditSessionRequest($session_id, $session, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -786,15 +786,15 @@ class SessionsApi
      * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\Session $session session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCreditSessionAsync($session_id, $body, string $contentType = self::contentTypes['updateCreditSession'][0])
+    public function updateCreditSessionAsync($session_id, $session, string $contentType = self::contentTypes['updateCreditSession'][0])
     {
-        return $this->updateCreditSessionAsyncWithHttpInfo($session_id, $body, $contentType)
+        return $this->updateCreditSessionAsyncWithHttpInfo($session_id, $session, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -808,16 +808,16 @@ class SessionsApi
      * Update an existing payment session
      *
      * @param  string $session_id session_id (required)
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\Session $session session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateCreditSessionAsyncWithHttpInfo($session_id, $body, string $contentType = self::contentTypes['updateCreditSession'][0])
+    public function updateCreditSessionAsyncWithHttpInfo($session_id, $session, string $contentType = self::contentTypes['updateCreditSession'][0])
     {
         $returnType = '';
-        $request = $this->updateCreditSessionRequest($session_id, $body, $contentType);
+        $request = $this->updateCreditSessionRequest($session_id, $session, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -846,13 +846,13 @@ class SessionsApi
      * Create request for operation 'updateCreditSession'
      *
      * @param  string $session_id session_id (required)
-     * @param  \Klarna\Payments\Model\Session $body session_request (required)
+     * @param  \Klarna\Payments\Model\Session $session session_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateCreditSession'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateCreditSessionRequest($session_id, $body, string $contentType = self::contentTypes['updateCreditSession'][0])
+    public function updateCreditSessionRequest($session_id, $session, string $contentType = self::contentTypes['updateCreditSession'][0])
     {
 
         // verify the required parameter 'session_id' is set
@@ -862,10 +862,10 @@ class SessionsApi
             );
         }
 
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
+        // verify the required parameter 'session' is set
+        if ($session === null || (is_array($session) && count($session) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling updateCreditSession'
+                'Missing the required parameter $session when calling updateCreditSession'
             );
         }
 
@@ -896,12 +896,12 @@ class SessionsApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($session)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($session));
             } else {
-                $httpBody = $body;
+                $httpBody = $session;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

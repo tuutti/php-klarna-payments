@@ -367,16 +367,16 @@ class OrdersApi
      * Create a new order
      *
      * @param  string $authorization_token authorization_token (required)
-     * @param  \Klarna\Payments\Model\CreateOrderRequest $body body (optional)
+     * @param  \Klarna\Payments\Model\CreateOrderRequest $create_order_request create_order_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Klarna\Payments\Model\Order
      */
-    public function createOrder($authorization_token, $body = null, string $contentType = self::contentTypes['createOrder'][0])
+    public function createOrder($authorization_token, $create_order_request = null, string $contentType = self::contentTypes['createOrder'][0])
     {
-        list($response) = $this->createOrderWithHttpInfo($authorization_token, $body, $contentType);
+        list($response) = $this->createOrderWithHttpInfo($authorization_token, $create_order_request, $contentType);
         return $response;
     }
 
@@ -386,16 +386,16 @@ class OrdersApi
      * Create a new order
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CreateOrderRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CreateOrderRequest $create_order_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Klarna\Payments\Model\Order, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createOrderWithHttpInfo($authorization_token, $body = null, string $contentType = self::contentTypes['createOrder'][0])
+    public function createOrderWithHttpInfo($authorization_token, $create_order_request = null, string $contentType = self::contentTypes['createOrder'][0])
     {
-        $request = $this->createOrderRequest($authorization_token, $body, $contentType);
+        $request = $this->createOrderRequest($authorization_token, $create_order_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -487,15 +487,15 @@ class OrdersApi
      * Create a new order
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CreateOrderRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CreateOrderRequest $create_order_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrderAsync($authorization_token, $body = null, string $contentType = self::contentTypes['createOrder'][0])
+    public function createOrderAsync($authorization_token, $create_order_request = null, string $contentType = self::contentTypes['createOrder'][0])
     {
-        return $this->createOrderAsyncWithHttpInfo($authorization_token, $body, $contentType)
+        return $this->createOrderAsyncWithHttpInfo($authorization_token, $create_order_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -509,16 +509,16 @@ class OrdersApi
      * Create a new order
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CreateOrderRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CreateOrderRequest $create_order_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createOrderAsyncWithHttpInfo($authorization_token, $body = null, string $contentType = self::contentTypes['createOrder'][0])
+    public function createOrderAsyncWithHttpInfo($authorization_token, $create_order_request = null, string $contentType = self::contentTypes['createOrder'][0])
     {
         $returnType = '\Klarna\Payments\Model\Order';
-        $request = $this->createOrderRequest($authorization_token, $body, $contentType);
+        $request = $this->createOrderRequest($authorization_token, $create_order_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -560,13 +560,13 @@ class OrdersApi
      * Create request for operation 'createOrder'
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CreateOrderRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CreateOrderRequest $create_order_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createOrder'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createOrderRequest($authorization_token, $body = null, string $contentType = self::contentTypes['createOrder'][0])
+    public function createOrderRequest($authorization_token, $create_order_request = null, string $contentType = self::contentTypes['createOrder'][0])
     {
 
         // verify the required parameter 'authorization_token' is set
@@ -604,12 +604,12 @@ class OrdersApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($create_order_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_order_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $create_order_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -667,16 +667,16 @@ class OrdersApi
      * Generate a consumer token
      *
      * @param  string $authorization_token authorization_token (required)
-     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $body body (optional)
+     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $customer_token_creation_request customer_token_creation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseToken'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Klarna\Payments\Model\CustomerTokenCreationResponse|\Klarna\Payments\Model\ErrorV2
      */
-    public function purchaseToken($authorization_token, $body = null, string $contentType = self::contentTypes['purchaseToken'][0])
+    public function purchaseToken($authorization_token, $customer_token_creation_request = null, string $contentType = self::contentTypes['purchaseToken'][0])
     {
-        list($response) = $this->purchaseTokenWithHttpInfo($authorization_token, $body, $contentType);
+        list($response) = $this->purchaseTokenWithHttpInfo($authorization_token, $customer_token_creation_request, $contentType);
         return $response;
     }
 
@@ -686,16 +686,16 @@ class OrdersApi
      * Generate a consumer token
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $customer_token_creation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseToken'] to see the possible values for this operation
      *
      * @throws \Klarna\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Klarna\Payments\Model\CustomerTokenCreationResponse|\Klarna\Payments\Model\ErrorV2, HTTP status code, HTTP response headers (array of strings)
      */
-    public function purchaseTokenWithHttpInfo($authorization_token, $body = null, string $contentType = self::contentTypes['purchaseToken'][0])
+    public function purchaseTokenWithHttpInfo($authorization_token, $customer_token_creation_request = null, string $contentType = self::contentTypes['purchaseToken'][0])
     {
-        $request = $this->purchaseTokenRequest($authorization_token, $body, $contentType);
+        $request = $this->purchaseTokenRequest($authorization_token, $customer_token_creation_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -810,15 +810,15 @@ class OrdersApi
      * Generate a consumer token
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $customer_token_creation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purchaseTokenAsync($authorization_token, $body = null, string $contentType = self::contentTypes['purchaseToken'][0])
+    public function purchaseTokenAsync($authorization_token, $customer_token_creation_request = null, string $contentType = self::contentTypes['purchaseToken'][0])
     {
-        return $this->purchaseTokenAsyncWithHttpInfo($authorization_token, $body, $contentType)
+        return $this->purchaseTokenAsyncWithHttpInfo($authorization_token, $customer_token_creation_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -832,16 +832,16 @@ class OrdersApi
      * Generate a consumer token
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $customer_token_creation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function purchaseTokenAsyncWithHttpInfo($authorization_token, $body = null, string $contentType = self::contentTypes['purchaseToken'][0])
+    public function purchaseTokenAsyncWithHttpInfo($authorization_token, $customer_token_creation_request = null, string $contentType = self::contentTypes['purchaseToken'][0])
     {
         $returnType = '\Klarna\Payments\Model\CustomerTokenCreationResponse';
-        $request = $this->purchaseTokenRequest($authorization_token, $body, $contentType);
+        $request = $this->purchaseTokenRequest($authorization_token, $customer_token_creation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -883,13 +883,13 @@ class OrdersApi
      * Create request for operation 'purchaseToken'
      *
      * @param  string $authorization_token (required)
-     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $body (optional)
+     * @param  \Klarna\Payments\Model\CustomerTokenCreationRequest $customer_token_creation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['purchaseToken'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function purchaseTokenRequest($authorization_token, $body = null, string $contentType = self::contentTypes['purchaseToken'][0])
+    public function purchaseTokenRequest($authorization_token, $customer_token_creation_request = null, string $contentType = self::contentTypes['purchaseToken'][0])
     {
 
         // verify the required parameter 'authorization_token' is set
@@ -927,12 +927,12 @@ class OrdersApi
         );
 
         // for model (json/xml)
-        if (isset($body)) {
+        if (isset($customer_token_creation_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($body));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($customer_token_creation_request));
             } else {
-                $httpBody = $body;
+                $httpBody = $customer_token_creation_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
