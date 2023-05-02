@@ -859,7 +859,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets locale
      *
-     * @param string|null $locale Used to define the language and region of the customer. The locale follows the format of (RFC 1766)[https://datatracker.ietf.org/doc/rfc1766/], meaning its value consists of language-country. The following values are applicable:  AT: \"de-AT\", \"de-DE\", \"en-DE\" BE: \"be-BE\", \"nl-BE\", \"fr-BE\", \"en-BE\" CH: \"it-CH\", \"de-CH\", \"fr-CH\", \"en-CH\" DE: \"de-DE\", \"de-AT\", \"en-DE\" DK: \"da-DK\", \"en-DK\" ES: \"es-ES\", \"ca-ES\", \"en-ES\" FI: \"fi-FI\", \"sv-FI\", \"en-FI\" GB: \"en-GB\" IT: \"it-IT\", \"en-IT\" NL: \"nl-NL\", \"en-NL\" NO: \"nb-NO\", \"en-NO\" PL: \"pl-PL\", \"en-PL\" SE: \"sv-SE\", \"en-SE\" US: \"en-US\".
+     * @param string|null $locale Used to define the language and region of the customer. The locale follows the format of [RFC 1766](https://datatracker.ietf.org/doc/rfc1766/), meaning its value consists of language-country. Read more on **[Supported Locals and Currencies](https://docs.klarna.com/klarna-payments/in-depth-knowledge/puchase-countries-currencies-locales/)**.
      *
      * @return self
      */

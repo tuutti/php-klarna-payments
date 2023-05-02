@@ -747,7 +747,7 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets tax_rate
      *
-     * @param int|null $tax_rate Tax rate of the order line. Non-negative value. The percentage value is represented with two implicit decimals. I.e 1900 = 19%.
+     * @param int|null $tax_rate Tax rate of the order line. Non-negative value. The percentage value is represented with two implicit decimals. I.e 2000 = 20%.
      *
      * @return self
      */
@@ -782,7 +782,7 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets total_amount
      *
-     * @param int $total_amount Total amount of the order line. Must be defined as minor units. Includes tax and discount. Eg: 2500=25 euros Value = (quantity x unit_price) - total_discount_amount.  (max value: 100000000)
+     * @param int $total_amount Total amount of the order line. Must be defined as minor units. Includes tax and discount. Eg: 2000=20 euros Value = (quantity x unit_price) - total_discount_amount.  (max value: 100000000)
      *
      * @return self
      */

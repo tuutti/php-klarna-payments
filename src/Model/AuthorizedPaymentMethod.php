@@ -251,6 +251,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
     public const TYPE_PAY_LATER_BY_CARD = 'pay_later_by_card';
     public const TYPE_PAY_BY_CARD = 'pay_by_card';
     public const TYPE_FIXED_SUM_CREDIT = 'fixed_sum_credit';
+    public const TYPE_ALTERNATIVE_PAYMENT_METHOD = 'alternative_payment_method';
 
     /**
      * Gets allowable values of the enum
@@ -271,6 +272,7 @@ class AuthorizedPaymentMethod implements ModelInterface, ArrayAccess, \JsonSeria
             self::TYPE_PAY_LATER_BY_CARD,
             self::TYPE_PAY_BY_CARD,
             self::TYPE_FIXED_SUM_CREDIT,
+            self::TYPE_ALTERNATIVE_PAYMENT_METHOD,
         ];
     }
 

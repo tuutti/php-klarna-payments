@@ -12,8 +12,8 @@ Name | Type | Description | Notes
 **quantity** | **int** | Quantity of the order line item. Must be a non-negative number. |
 **quantity_unit** | **string** | Unit used to describe the quantity, e.g. kg, pcs, etc. If defined the value has to be 1-8 characters. | [optional]
 **reference** | **string** | Client facing article number, SKU or similar. Max length is 256 characters. | [optional]
-**tax_rate** | **int** | Tax rate of the order line. Non-negative value. The percentage value is represented with two implicit decimals. I.e 1900 &#x3D; 19%. | [optional]
-**total_amount** | **int** | Total amount of the order line. Must be defined as minor units. Includes tax and discount. Eg: 2500&#x3D;25 euros Value &#x3D; (quantity x unit_price) - total_discount_amount.  (max value: 100000000) |
+**tax_rate** | **int** | Tax rate of the order line. Non-negative value. The percentage value is represented with two implicit decimals. I.e 2000 &#x3D; 20%. | [optional]
+**total_amount** | **int** | Total amount of the order line. Must be defined as minor units. Includes tax and discount. Eg: 2000&#x3D;20 euros Value &#x3D; (quantity x unit_price) - total_discount_amount.  (max value: 100000000) |
 **total_discount_amount** | **int** | Non-negative minor units. Includes tax. Eg: 500&#x3D;5 euros | [optional]
 **total_tax_amount** | **int** | Total tax amount of the order line. Must be within ±1 of total_amount - total_amount 10000 / (10000 + tax_rate). Negative when type is discount. | [optional]
 **type** | **string** | Type of the order line item. The possible values are:  physical discount shipping_fee sales_tax digital gift_card store_credit surcharge | [optional]
