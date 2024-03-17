@@ -4,8 +4,8 @@ All URIs are relative to https://api.klarna.com, except if the operation defines
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an existing authorization |
-| [**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create a new order |
+| [**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an authorization |
+| [**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create an order |
 | [**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token |
 
 
@@ -15,7 +15,7 @@ All URIs are relative to https://api.klarna.com, except if the operation defines
 cancelAuthorization($authorization_token)
 ```
 
-Cancel an existing authorization
+Cancel an authorization
 
 Use this API call to cancel/release an authorization. If the `authorization_token` received during a Klarna Payments won’t be used to place an order immediately you could release the authorization. Read more on **[Cancel an existing authorization](https://docs.klarna.com/klarna-payments/other-actions/cancel-an-authorization/)**.
 
@@ -76,7 +76,7 @@ void (empty response body)
 createOrder($authorization_token, $create_order_request): \Klarna\Payments\Model\Order
 ```
 
-Create a new order
+Create an order
 
 Use this API call to create a new order. Placing an order towards Klarna means that the Klarna Payments session will be closed and that an order will be created in Klarna's system.<br/>When you have received the `authorization_token` for a successful authorization you can place the order. Among the other order details in this request, you include a URL to the confirmation page for the customer.<br/>When the Order has been successfully placed at Klarna, you need to handle it either through the Merchant Portal or using [Klarna’s Order Management API](#order-management-api). Read more on **[Create a new order](https://docs.klarna.com/klarna-payments/integrate-with-klarna-payments/step-3-create-an-order/)**.
 

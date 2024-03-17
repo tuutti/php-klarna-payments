@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PHONY :=
 COMMAND = openapi-generator-cli
-OPENAPI_VERSION ?= v6.3.0
+OPENAPI_VERSION ?= v7.4.0
 
 include .env
 export
@@ -16,6 +16,12 @@ PHONY += fix-schema
 fix-schema:
 	@echo "$$( jq '.security = [{ "basicAuth": [] }]' $(NAME).json )" > $(NAME).json
 	@echo "$$( jq '.components .securitySchemes = { "basicAuth": { "type": "http", "scheme": "basic" }}' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/sessions".post.tags = ["sessions"]' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/sessions/{session_id}".post.tags = ["sessions"]' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/sessions/{session_id}".get.tags = ["sessions"]' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/authorizations/{authorizationToken}".delete.tags = ["orders"]' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/authorizations/{authorizationToken}/order".post.tags = ["orders"]' $(NAME).json )" > $(NAME).json
+	@echo "$$( jq '.paths."/payments/v1/authorizations/{authorizationToken}/customer-token".post.tags = ["orders"]' $(NAME).json )" > $(NAME).json
 
 PHONY += build-client
 build-client:
