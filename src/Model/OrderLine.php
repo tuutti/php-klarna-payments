@@ -326,7 +326,7 @@ class OrderLine implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('image_url', $data ?? [], null);
         $this->setIfExists('merchant_data', $data ?? [], null);

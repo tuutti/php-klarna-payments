@@ -272,7 +272,7 @@ class ProductIdentifiers implements ModelInterface, ArrayAccess, \JsonSerializab
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('brand', $data ?? [], null);
         $this->setIfExists('category_path', $data ?? [], null);

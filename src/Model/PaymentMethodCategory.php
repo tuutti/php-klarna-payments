@@ -254,7 +254,7 @@ class PaymentMethodCategory implements ModelInterface, ArrayAccess, \JsonSeriali
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('asset_urls', $data ?? [], null);
         $this->setIfExists('identifier', $data ?? [], null);
