@@ -429,7 +429,7 @@ class Session implements ModelInterface, ArrayAccess, \JsonSerializable
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
      */
-    public function __construct(array $data = null)
+    public function __construct(?array $data = null)
     {
         $this->setIfExists('acquiring_channel', $data ?? [], null);
         $this->setIfExists('attachment', $data ?? [], null);
