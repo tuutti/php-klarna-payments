@@ -28,5 +28,6 @@ Name | Type | Description | Notes
 **shipping_address** | [**\Klarna\Payments\Model\Address**](Address.md) |  | [optional]
 **status** | **string** | The current status of the session. Possible values: &#39;complete&#39;, &#39;incomplete&#39; where &#39;complete&#39; is set when the order has been placed. | [optional] [readonly]
 **intent** | **string** | Intent for the session. The field is designed to let partners inform Klarna of the purpose of the customer’s session. | [optional]
+**step_up_id** | **string** | Step-up recovery identifier obtained from a failed token charge. Use this ID to create a recovery session for customer flow. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

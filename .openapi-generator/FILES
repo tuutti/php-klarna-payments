@@ -32,6 +32,7 @@ src/Api/OrdersApi.php
 src/Api/SessionsApi.php
 src/ApiException.php
 src/Configuration.php
+src/FormDataProcessor.php
 src/HeaderSelector.php
 src/Model/Address.php
 src/Model/AssetUrls.php

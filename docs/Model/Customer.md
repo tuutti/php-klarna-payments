@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**customer_token** | **string** | Klarna Customer Token. This token can be used to identify a returning customer and provide a faster checkout experience. | [optional]
 **date_of_birth** | **string** | Customer’s date of birth. The format is ‘yyyy-mm-dd’ | [optional]
 **gender** | **string** | Customer’s gender - ‘male’ or ‘female’ | [optional]
 **last_four_ssn** | **string** | Last four digits of the customer&#39;s social security number. This value is available for US customers. | [optional]

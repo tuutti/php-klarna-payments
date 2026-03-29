@@ -1,5 +1,7 @@
 # Klarna\Payments\SessionsApi
 
+
+
 All URIs are relative to https://api.klarna.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |

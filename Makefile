@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PHONY :=
 COMMAND = openapi-generator-cli
-OPENAPI_VERSION ?= v7.4.0
+OPENAPI_VERSION ?= v7.19.0
 
 include .env
 export
