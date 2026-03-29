@@ -1,12 +1,14 @@
 # Klarna\Payments\OrdersApi
 
+
+
 All URIs are relative to https://api.klarna.com, except if the operation defines another base path.
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**cancelAuthorization()**](OrdersApi.md#cancelAuthorization) | **DELETE** /payments/v1/authorizations/{authorizationToken} | Cancel an authorization |
 | [**createOrder()**](OrdersApi.md#createOrder) | **POST** /payments/v1/authorizations/{authorizationToken}/order | Create an order |
-| [**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a consumer token |
+| [**purchaseToken()**](OrdersApi.md#purchaseToken) | **POST** /payments/v1/authorizations/{authorizationToken}/customer-token | Generate a customer token |
 
 
 ## `cancelAuthorization()`
@@ -140,9 +142,9 @@ try {
 purchaseToken($authorization_token, $customer_token_creation_request): \Klarna\Payments\Model\CustomerTokenCreationResponse
 ```
 
-Generate a consumer token
+Generate a customer token
 
-Use this API call to create a Klarna Customer Token.<br/>After having obtained an `authorization_token` for a successful authorization, this can be used to create a purchase token instead of placing the order. Creating a Klarna Customer Token results in Klarna storing customer and payment method details. Read more on **[Generate a consumer token](https://docs.klarna.com/klarna-payments/in-depth-knowledge/customer-token/)**.
+Use this API call to create a Klarna Customer Token.<br/>After having obtained an `authorization_token` for a successful authorization, this can be used to create a purchase token instead of placing the order. Creating a Klarna Customer Token results in Klarna storing customer and payment method details. Read more on **[Generate a customer token](https://docs.klarna.com/klarna-payments/in-depth-knowledge/customer-token/)**.
 
 ### Example
 

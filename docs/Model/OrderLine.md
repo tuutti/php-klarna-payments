@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **total_amount** | **int** | Total amount of the order line. Must be defined as minor units. Includes tax and discount. Eg: 2000&#x3D;20 euros Value &#x3D; (quantity x unit_price) - total_discount_amount.  (max value: 200000000) |
 **total_discount_amount** | **int** | Non-negative minor units. Includes tax. Eg: 500&#x3D;5 euros | [optional]
 **total_tax_amount** | **int** | Total tax amount of the order line. Must be within ±1 of total_amount - total_amount 10000 / (10000 + tax_rate). Negative when type is discount. | [optional]
-**type** | **string** | Type of the order line item. The possible values are:  physical discount shipping_fee sales_tax digital gift_card store_credit surcharge | [optional]
-**unit_price** | **int** | Price for a single unit of the order line. Must be defined as minor units. Includes tax, excludes discount. (max value: 200000000) |
+**type** | **string** | Type of the order line item. | [optional]
+**unit_price** | **int** | Price for a single unit of the order line. Must be defined as minor units and exclude any discount. Typically including taxes, however some countries may include specific requirements, see [Tax handling guidelines](https://docs.klarna.com/payments/web-payments/additional-resources/error-handling-and-validations/tax-handling/) for further details. (max value: 200000000) |
 **subscription** | [**\Klarna\Payments\Model\Subscription**](Subscription.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

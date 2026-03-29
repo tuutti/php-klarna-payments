@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **notification** | **string** | URL for notifications on pending orders. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters). | [optional]
 **push** | **string** | URL that will be requested when an order is completed. Should be different than checkout and confirmation URLs. Insert {session.id} and/or {order.id} as placeholder to connect either of those IDs to the URL (max 2000 characters). | [optional]
 **authorization** | **string** | URL for receiving the authorization token when payment is completed. Used for Authorization Callback. | [optional]
+**app_return_url** | **string** | Mobile application return URL (app scheme with no action deeplink).  The customer will be redirected to this URL after third party redirects or redirects to the Klarna Application.  It is expected to open the integrating mobile application in it&#39;s last state (no state changes or deeplink navigations). | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
